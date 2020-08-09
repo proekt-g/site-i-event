@@ -1,5 +1,34 @@
-$default-font: 'Muller';
-$content-width: 1640px;
-$heightHeader: 0px;
-$heightFooter: 140px;
+$default-font: 'Montserrat',
+sans-serif;
+$content-width: 1590px;
+$heightHeader: 60px;
+$heightFooter: 82px;
 $minHeightMain: calc(100vh - (#{$heightHeader} + #{$heightFooter}));
+$mainColor: #151b24;
+$siteColor: #337df6;
+$submainColor: #969696;
+@keyframes swing {
+    15% {
+        transform: translateX(9px);
+    }
+    30% {
+        -webkit-transform: translateX(-9px);
+        transform: translateX(-9px);
+    }
+    40% {
+        -webkit-transform: translateX(6px);
+        transform: translateX(6px);
+    }
+    50% {
+        -webkit-transform: translateX(-6px);
+        transform: translateX(-6px);
+    }
+    65% {
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
