@@ -1,4 +1,7 @@
 body {
+    &.block {
+        overflow: hidden;
+    }
     font-family: $default-font;
     font-display: swap;
     color: $mainColor;
@@ -10,7 +13,7 @@ body {
 main {
     min-height: $minHeightMain;
     padding-top: $heightHeader;
-    @media(max-width: 768px) {
+    @media(max-width: 950px) {
         padding-top: 111px;
     }
     @media(max-width: 500px) {
@@ -25,6 +28,9 @@ main {
     padding: 0 10px;
     @media(max-width: 1280px) {
         padding: 0 50px;
+    }
+    @media(max-width: 950px) {
+        padding: 0 30px;
     }
     @media(max-width: 500px) {
         padding: 0 20px;
@@ -66,6 +72,9 @@ main {
 .submain-title {
     font-size: 16px;
     font-weight: 700;
+    @media(max-width: 500px) {
+        font-size: 12px;
+    }
 }
 
 .avatars {
@@ -92,8 +101,11 @@ main {
         background-color: #ffa9d7;
     }
     &--more {
-        border: 1px solid #969696;
+        border: 1px solid #cacaca;
         background-color: transparent;
+        .avatar__name {
+            color: #cbcbcb;
+        }
     }
     &__name {
         text-align: center;
@@ -118,6 +130,9 @@ main {
             height: auto;
             padding: 10px 25px 20px;
             box-shadow: 0 0px 9px 2px rgba(0, 0, 0, 0.05);
+            @media(max-width: 500px) {
+                padding: 15px;
+            }
         }
         &-chat {
             position: absolute;
@@ -158,6 +173,9 @@ main {
         font-weight: 400;
         margin-left: 6px;
         align-self: center;
+        @media(max-width: 500px) {
+            font-size: 12px;
+        }
     }
 }
 
@@ -180,6 +198,9 @@ main {
 
 .strip {
     margin-top: 40px;
+    @media(max-width: 500px) {
+        margin-top: 30px;
+    }
     &__inner {
         display: flex;
         justify-content: space-between;
@@ -193,9 +214,27 @@ main {
         font-weight: 400;
         align-self: flex-end;
         transition: .3s;
+        @media(max-width: 700px) {
+            display: none;
+        }
         &:hover {
             color: #5192FC;
         }
+        &-mobail {
+            display: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 2px;
+            border: 1px solid $submainColor;
+            @media(max-width: 700px) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+    &__numbers {
+        align-self: center;
     }
     &__number {
         color: $submainColor;
@@ -203,6 +242,10 @@ main {
         margin-right: 10px;
         font-weight: 300;
         transition: .3s;
+        @media(max-width: 500px) {
+            font-size: 12px;
+            margin-right: 7px;
+        }
         &:hover {
             color: #5192FC;
         }
@@ -217,6 +260,18 @@ main {
     flex: 0 1 330px;
     padding-bottom: 20px;
     margin-left: 20px;
+    position: relative;
+    @media(max-width: 1220px) {
+        margin-left: 0;
+    }
+    &__close {
+        position: absolute;
+        right: 0;
+        display: none;
+        @media(max-width: 1220px) {
+            display: block;
+        }
+    }
     &__reset {
         margin-top: 40px;
         opacity: 0.8;
@@ -224,11 +279,41 @@ main {
         font-size: 14px;
         font-weight: 500;
         background-color: transparent;
+        @media(max-width: 500px) {
+            font-size: 12px;
+        }
+    }
+    &__submit {
+        margin-top: 15px;
+        border-radius: 5px;
+        background-color: #337df6;
+        width: 100%;
+        color: #d2e2fd;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 50px;
+        height: 50px;
+        text-align: center;
+        display: none;
+        margin-bottom: 20px;
+        @media(max-width: 1220px) {
+            display: block;
+        }
+        @media(max-width: 500px) {
+            font-size: 12px;
+        }
     }
 }
 
 .choise {
     position: relative;
+    margin-top: 20px;
+    @media(max-width: 1220px) {
+        margin-top: 26px;
+    }
+    &:nth-child(2) {
+        margin-top: 40px;
+    }
     &--open {
         &::after {
             content: url(../images/arrow-up.svg)!important;
@@ -250,6 +335,13 @@ main {
         font-weight: 500;
         margin-bottom: 20px;
         cursor: pointer;
+        @media(max-width: 1220px) {
+            margin-bottom: 5px;
+        }
+        @media(max-width: 500px) {
+            font-size: 14px;
+            font-weight: 600;
+        }
     }
     &__inner {
         height: 0px;
@@ -261,6 +353,9 @@ main {
         font-size: 14px;
         font-weight: 400;
         display: flex;
+        @media(max-width: 500px) {
+            font-size: 12px;
+        }
         &-input {
             cursor: pointer;
         }
@@ -272,6 +367,7 @@ main {
 }
 
 .date {
+    margin-top: 40px;
     &__title {
         font-size: 16px;
         font-weight: 500;
@@ -294,6 +390,9 @@ main {
         margin-right: 1px;
         cursor: pointer;
         transition: .3s;
+        @media(max-width: 500px) {
+            padding: 0 16px;
+        }
         &:hover {
             background-color: #5192FC;
             color: #fff;
@@ -316,6 +415,7 @@ main {
 
 .checkbox {
     position: relative;
+    margin-top: 40px;
     &--open {
         &::after {
             content: url(../images/arrow-up.svg)!important;
@@ -342,9 +442,17 @@ main {
         font-size: 16px;
         font-weight: 500;
         margin-bottom: 20px;
+        @media(max-width: 500px) {
+            font-size: 14px;
+            font-weight: 600;
+        }
     }
     &__element {
+        display: flex;
         margin-top: 15px;
+        @media(max-width: 500px) {
+            font-size: 12px;
+        }
         &:first-child {
             margin-top: 0;
         }
@@ -403,6 +511,7 @@ main {
 .tags {
     padding-top: 40px;
     border-top: 0.5px solid rgba(0, 0, 0, 0.2);
+    margin-top: 15px;
     &__title {
         font-size: 16px;
         font-weight: 500;
@@ -462,5 +571,97 @@ main {
         &:hover {
             color: $siteColor;
         }
+    }
+}
+
+.settings {
+    display: none;
+    @media(max-width: 1220px) {
+        display: block;
+    }
+    &__icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 3px;
+        background-color: #337df6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.sidebar {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    right: 0;
+    z-index: 102;
+    width: 0px;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: background-color .8s;
+    &--open {
+        width: 100vw;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+    &__content {
+        position: relative;
+        z-index: 105;
+        min-height: 100vh;
+        width: 0px;
+        margin-left: auto;
+        background-color: #fff;
+        padding: 0;
+        transition: .3s;
+        &--open {
+            width: 394px;
+            padding: 20px 30px 0 37px;
+            @media(max-width: 500px) {
+                padding: 20px 20px 0 19px;
+            }
+            @media(max-width: 414px) {
+                width: 100%;
+            }
+        }
+    }
+    .submain-title {
+        @media(max-width: 500px) {
+            font-size: 16px;
+            font-weight: 700;
+        }
+    }
+}
+
+.button-up {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    cursor: pointer;
+    opacity: 0;
+    transition: .6s;
+    pointer-events: none;
+    z-index: 100;
+    @media(max-width: 768px) {
+        bottom: 17px;
+        right: 30px;
+    }
+    @media(max-width: 500px) {
+        bottom: 20px;
+        right: 20px;
+    }
+    &--active {
+        pointer-events: auto;
+        opacity: 1;
+    }
+    &__img {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        background-color: #ffffff;
+        display: block;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
     }
 }
