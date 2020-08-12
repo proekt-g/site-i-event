@@ -187,13 +187,6 @@
                 display: flex;
                 flex-grow: 1;
                 align-items: flex-end;
-                &-inner {
-                    display: flex;
-                    flex-wrap: wrap;
-                    max-height: 20px;
-                    overflow: hidden;
-                    margin: 20px -2px 15px;
-                }
             }
             &-bottom {
                 margin-top: 19px;
@@ -204,20 +197,6 @@
             &-share {
                 flex-grow: 1;
                 text-align: right;
-            }
-        }
-        &__tags {
-            &-element {
-                line-height: 20px;
-                display: block;
-                height: 20px;
-                margin: 0 2px;
-                background-color: #f3f3f3;
-                border-radius: 100px;
-                padding: 0 10px;
-                color: $submainColor;
-                font-size: 9px;
-                font-weight: 400;
             }
         }
         &__text {
@@ -290,13 +269,6 @@
         &__star {
             flex-grow: 1;
             text-align: right;
-            cursor: auto;
-            & svg {
-                cursor: pointer;
-                &:hover path {
-                    stroke: $siteColor;
-                }
-            }
         }
         &__avatars {
             margin: 0 -2.5px;

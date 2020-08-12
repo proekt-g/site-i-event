@@ -3,6 +3,9 @@ document.onreadystatechange = function() {
         if (document.querySelector('.sidebar') !== null && window.innerWidth <= 1220) {
             document.querySelector('.sidebar__content').insertAdjacentElement('afterbegin', document.querySelector('.filter'));
         }
+        if (document.querySelector('main.event') !== null) {
+            document.querySelector('.tags-line').insertAdjacentElement('afterend', document.querySelector('.speakers'));
+        }
     }
 }
 window.addEventListener('load', function() {
@@ -23,7 +26,8 @@ window.addEventListener('load', function() {
         $filterSubmit = document.querySelector('.filter__submit'),
         $checkboxElementInput = document.querySelectorAll('.checkbox__element-input'),
         $choiseElementInput = document.querySelectorAll('.choise__element-input'),
-        $buttonUp = document.querySelector('.button-up');
+        $buttonUp = document.querySelector('.button-up'),
+        $contentMore = document.querySelector('.content__more');
 
 
     function autoDetectHeight(_element, coef = 0, startHeight = 0) {
@@ -94,7 +98,7 @@ window.addEventListener('load', function() {
     }
 
     function checkScroll() {
-        if (window.scrollY > window.innerHeight * 1.1) $buttonUp.classList.add('button-up--active');
+        if (window.scrollY > window.innerHeight) $buttonUp.classList.add('button-up--active');
         else $buttonUp.classList.remove('button-up--active');
     }
 
@@ -164,6 +168,10 @@ window.addEventListener('load', function() {
     }
     window.addEventListener('scroll', checkScroll, false);
     if ($buttonUp !== null) $buttonUp.addEventListener('click', upPage);
+    if ($contentMore !== null) {
+        $contentMore.addEventListener('click', autoDetectHeight.bind(null, document.querySelector('.content__text'), undefined, 36), false);
+        $contentMore.addEventListener('click', renameContentText.bind(null, $contentMore, 'Скрыть', 'Показать полностью'))
+    }
 
 
 
