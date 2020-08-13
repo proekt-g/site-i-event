@@ -41,6 +41,8 @@ main {
     background-color: transparent;
     &__inner {
         display: flex;
+        overflow-y: hidden;
+        overflow-x: auto;
     }
     &__element {
         margin-top: 18px;
@@ -49,6 +51,7 @@ main {
         color: $mainColor;
         opacity: 0.4;
         margin-right: 6px;
+        flex: 0 0 auto;
         @media(max-width: 500px) {
             font-size: 10px;
             margin-top: 8px;
@@ -736,6 +739,9 @@ main {
         display: block;
         margin-top: 15px;
         transition: .3s;
+        @media(max-width: 500px) {
+            font-size: 12px;
+        }
         &:hover {
             color: #5192FC;
             &::after {
@@ -804,16 +810,27 @@ main {
             &-top {
                 display: flex;
                 align-items: center;
+                @media(max-width: 500px) {
+                    display: block;
+                }
             }
             &-name {
                 font-size: 12px;
-                font-weight: 500;
+                font-weight: 600;
+                @media(max-width: 500px) {
+                    font-size: 10px;
+                }
             }
             &-date {
                 margin-left: 10px;
                 color: $submainColor;
                 font-size: 12px;
                 font-weight: 400;
+                @media(max-width: 500px) {
+                    font-size: 10px;
+                    margin-left: 0;
+                    margin-top: 5px;
+                }
             }
         }
         &-text {
@@ -821,6 +838,10 @@ main {
             font-weight: 400;
             line-height: 18.2px;
             margin: 10px 0 5px;
+            @media(max-width: 500px) {
+                font-size: 12px;
+                line-height: 15.6px;
+            }
         }
         &-answer {
             color: $submainColor;
@@ -828,6 +849,9 @@ main {
             font-weight: 400;
             cursor: pointer;
             transition: .3s;
+            @media(max-width: 500px) {
+                font-size: 12px;
+            }
             &:hover {
                 color: $siteColor;
             }
@@ -836,10 +860,29 @@ main {
 }
 
 .speakers {
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        &-more {
+            color: $submainColor;
+            font-size: 14px;
+            font-weight: 400;
+            display: none;
+            @media(max-width: 1220px) {
+                display: block;
+            }
+            @media(max-width: 500px) {
+                font-size: 12px;
+            }
+        }
+    }
     &__speaker {
         position: relative;
         margin-top: 20px;
         display: flex;
+        @media(max-width: 500px) {
+            padding-right: 35px;
+        }
         &-inner {
             margin-left: 10px;
         }
@@ -847,12 +890,150 @@ main {
             font-size: 14px;
             font-weight: 600;
             margin-bottom: 5px;
+            @media(max-width: 500px) {
+                font-size: 12px;
+            }
         }
         &-text {
             font-size: 12px;
             font-weight: 300;
             line-height: 15.6px;
             max-width: 370px;
+            @media(max-width: 500px) {
+                font-size: 10px;
+                line-height: 13px;
+            }
+        }
+    }
+}
+
+.expo-box {
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    background-color: #ffffff;
+    &__images {
+        max-width: 100%;
+        width: 100%;
+        border-radius: 3px 3px 0 0;
+    }
+    &__img {
+        max-width: 100%;
+        width: 100%;
+        border-radius: 3px 3px 0 0;
+    }
+    .icon-star {
+        position: absolute;
+        top: 17px;
+        right: 16px;
+    }
+    &__inner {
+        padding: 0 20px;
+        flex-grow: 1;
+    }
+    &__title {
+        margin: 15px 0 10px;
+        font-size: 14px;
+        font-weight: 500;
+        @media(max-width: 500px) {
+            font-size: 10px;
+        }
+    }
+    &__tag {
+        margin: 10px 0 20px;
+        font-size: 12px;
+        font-weight: 400;
+        @media(max-width: 500px) {
+            font-size: 10px;
+            margin: 10px 0 15px;
+        }
+    }
+    .bottom-info {
+        padding: 10px 20px 15px 20px;
+        justify-content: space-between;
+    }
+}
+
+.filter-time {
+    &__title {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    &__inner {
+        width: 100%;
+        display: inline-block;
+        border-radius: 2px;
+        box-shadow: 0 0 2px rgb(204, 204, 204);
+        transition: all .5s ease;
+        position: relative;
+        height: 100%;
+        text-align: left;
+        margin-top: 13px;
+        &--open {
+            background-color: #fff;
+            &::after {
+                transform: rotate(180deg);
+            }
+        }
+        &::after {
+            content: url(../images/arrow-bottom-black.svg);
+            position: absolute;
+            right: 25px;
+            top: 25%;
+            transition: .6s;
+        }
+        &:hover {
+            box-shadow: 0 0 4px rgb(204, 204, 204)
+        }
+    }
+    &__select {
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        display: block;
+        height: 42px;
+        line-height: 42px;
+        padding-left: 24px;
+        @media(max-width: 500px) {
+            font-size: 10px;
+        }
+    }
+    &__dropdown {
+        position: absolute;
+        background-color: #fff;
+        width: 100%;
+        left: 0;
+        margin-top: 1px;
+        box-shadow: 0 1px 2px rgb(204, 204, 204);
+        border-radius: 0 1px 5px 5px;
+        overflow: hidden;
+        height: 0;
+        z-index: 9;
+        padding: 0;
+        list-style: none;
+        transition: .6s;
+    }
+    &__element {
+        display: block;
+        padding-left: 24px;
+        line-height: 40px;
+        height: 40px;
+        transition: all .2s ease-in-out;
+        cursor: pointer;
+        font-size: 12px;
+        border-top: 1px solid #e5e5e5;
+        @media(max-width: 500px) {
+            font-size: 10px;
+        }
+        &--active {
+            border-left: 2px solid $siteColor;
+            background-color: #f8f8f8;
+        }
+        &:hover {
+            background-color: #f8f8f8;
+        }
+        &:active {
+            background-color: #f8f8f8;
         }
     }
 }

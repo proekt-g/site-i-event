@@ -1,0 +1,27 @@
+.exhibitor {
+    .content__box {
+        &-inner {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+    }
+    .content__box-p {
+        color: $siteColor;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 15.6px;
+        margin-top: 20px;
+        flex-grow: 1;
+        align-self: flex-end;
+        display: flex;
+        align-items: flex-end;
+        @media(max-width: 500px) {
+            font-size: 10px;
+        }
+    }
+    &__filter-time {
+        margin-top: 40px;
+    }
+}

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="sidebar__content"></div>
+    </aside>
+    <aside class="button-up">
+        <div class="button-up__img">
+            <svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 8L7.5 2L1 8" stroke="#337DF6" stroke-width="2"/>
+            </svg>
+        </div>
+    </aside>
+    <header class="header" id="header">
+        <div class="layer">
+            <div class="container">
+                <div class="header__inner">
+                    <a class="header__logo" href="#">
+                        <picture>
+                            <source media="(max-width: 500px)" srcset="assets/images/logo-mobail.jpg">
+                            <source media="(max-width: 768px)" srcset="assets/images/logo-tablet.jpg">
+                            <img class="header__logo-img" src="assets/images/logo.jpg" alt="logo">
+                        </picture>
+                    </a>
+                    <nav class="header__menu">
+                        <a class="header__menu-element header__menu-element--active" href="#">Программа</a>
+                        <a class="header__menu-element" href="#">Спикеры</a>
+                        <a class="header__menu-element" href="#">Трансляции</a>
+                        <a class="header__menu-element" href="#">Экспоненты</a>
+                        <a class="header__menu-element" href="#">Новости</a>
+                    </nav>
+                    <div class="header__icon">
+                        <a class="header__star" href="#">
+                            <div class="header__star-img">
+                                <svg class="img-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19">
+                                    <defs>
+                                        <clipPath id="kq7ma">
+                                            <path fill="#fff" d="M19.948 7.179a1.06 1.06 0 0 0-.914-.724l-5.774-.52L10.978.64A1.063 1.063 0 0 0 10 0c-.427 0-.81.251-.977.64L6.74 5.936l-5.774.52a1.063 1.063 0 0 0-.915.723 1.05 1.05 0 0 0 .31 1.12l4.365 3.794L3.44 17.71c-.094.413.067.84.413 1.088a1.065 1.065 0 0 0 1.169.052L10 15.9l4.978 2.95a1.07 1.07 0 0 0 1.169-.05 1.05 1.05 0 0 0 .413-1.089l-1.287-5.618 4.365-3.794a1.05 1.05 0 0 0 .31-1.12z"/></clipPath></defs><g><g><path fill="none" stroke="#969696" stroke-miterlimit="20" stroke-width="2" d="M19.948 7.179a1.06 1.06 0 0 0-.914-.724l-5.774-.52v0L10.978.64A1.063 1.063 0 0 0 10 0c-.427 0-.81.251-.977.64L6.74 5.936v0l-5.774.52a1.063 1.063 0 0 0-.915.723 1.05 1.05 0 0 0 .31 1.12l4.365 3.794v0L3.44 17.71c-.094.413.067.84.413 1.088a1.065 1.065 0 0 0 1.169.052L10 15.9v0l4.978 2.95a1.07 1.07 0 0 0 1.169-.05 1.05 1.05 0 0 0 .413-1.089l-1.287-5.618v0l4.365-3.794a1.05 1.05 0 0 0 .31-1.12z" clip-path="url(&quot;#kq7ma&quot;)"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </a>
+                        <a class="header__message" href="#">
+                            <div class="header__star-img">
+                                <svg class="img-svg" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                    <defs>
+                                        <clipPath id="hcpxa">
+                                            <path fill="#fff" d="M2.63 17.005H1.292l.946-.96c.51-.518.83-1.191.915-1.922C.968 12.668-.12 10.56-.12 8.35-.12 4.273 3.573.13 9.356.13c6.127 0 9.413 3.812 9.413 7.863 0 4.077-3.32 7.887-9.413 7.887-1.067 0-2.18-.145-3.175-.41a4.925 4.925 0 0 1-3.55 1.535z"/>
+                                        </clipPath></defs><g><g>
+                                                <path fill="none" stroke="#969696" stroke-miterlimit="20" stroke-width="2" d="M2.63 17.005v0H1.292v0l.946-.96c.51-.518.83-1.191.915-1.922C.968 12.668-.12 10.56-.12 8.35-.12 4.273 3.573.13 9.356.13c6.127 0 9.413 3.812 9.413 7.863 0 4.077-3.32 7.887-9.413 7.887-1.067 0-2.18-.145-3.175-.41a4.925 4.925 0 0 1-3.55 1.535z" clip-path="url(&quot;#hcpxa&quot;)"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="header__new-message"></div>
+                        </a>
+                    </div>
+                    <a class="header__avatar" href="#">
+                        <picture>
+                            <source media="(max-width: 500px)" srcset="assets/images/me-avatar-little.jpg">
+                            <img class="header__img" src="assets/images/me-avatar.jpg" alt="">
+                        </picture>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <nav class="header__menu header__menu--mobail">
+            <a class="header__menu-element header__menu-element--active" href="#">Программа</a>
+            <a class="header__menu-element" href="#">Спикеры</a>
+            <a class="header__menu-element" href="#">Трансляции</a>
+            <a class="header__menu-element" href="#">Экспоненты</a>
+            <a class="header__menu-element" href="#">Новости</a>
+        </nav>
+    </header>
+    <main class="exhibitor">
+        <section class="crumbs">
+            <div class="container">
+                <div class="crumbs__inner">
+                    <a class="crumbs__element" href="#">Главаня -</a>
+                    <a class="crumbs__element" href="#">Экспоненты -</a>
+                    <a class="crumbs__element crumbs__element--current" href="#">Программа мероприятий</a>
+                </div>
+            </div>
+        </section>
+        <section class="main">
+            <div class="container">
+                <div class="main__inner">
+                    <div class="content">
+                        <div class="content__top">
+                            <div class="main-title content__main-title">
+                                <span class="main-title__text">Программа экспонентов</span>
+                            </div>
+                            <div class="settings">
+                                <div class="settings__icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16"><g><g><g><path fill="#fff" d="M16.593 1.83a.645.645 0 0 1 0 1.29H6.776a2.028 2.028 0 0 1-1.92 1.38c-.891 0-1.65-.579-1.92-1.38H1.406a.645.645 0 0 1 0-1.29h1.532A2.028 2.028 0 0 1 4.857.45c.89 0 1.649.58 1.919 1.38zm-11 .645a.737.737 0 1 0-1.475.002.737.737 0 0 0 1.475-.002z"/></g><g><path fill="#fff" d="M16.593 7.35a.645.645 0 0 1 0 1.29H15.06a2.028 2.028 0 0 1-1.92 1.38c-.89 0-1.649-.579-1.919-1.38H1.405a.645.645 0 0 1 0-1.29h9.816a2.028 2.028 0 0 1 1.92-1.38c.891 0 1.65.58 1.92 1.38zm-2.716.645a.737.737 0 1 0-1.474.002.737.737 0 0 0 1.474-.002z"/></g><g><path fill="#fff" d="M16.593 12.88a.645.645 0 0 1 0 1.29H9.537a2.028 2.028 0 0 1-1.92 1.38c-.89 0-1.649-.579-1.919-1.38H1.405a.645.645 0 0 1 0-1.29h4.293a2.028 2.028 0 0 1 1.92-1.38c.891 0 1.65.58 1.92 1.38zm-8.239.645a.737.737 0 1 0-1.474.002.737.737 0 0 0 1.474-.002z"/></g></g></g></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content__block">
+                            <div class="content__box">
+                                <div class="content__box-inner">
+                                    <div class="content__box-top">
+                                        <div class="content__time">18:30</div>
+                                        <div class="content__day">20.05.2020</div>
+                                    </div>
+                                    <div class="submain-title"><span class="submain-title__text">Час региона. Вологодская область.</span></div>
+                                    <div class="content__box-subtitle">Описание описание длинное описание описание длинное описаниеописание длинное описание</div>
+                                    <div class="content__box-p">Автономное учреждение дополнительно профессионального образования Ханты-Мансийского автономного округа - Югры "Институт развития образования" </div>
+                                </div>
+                            </div>
+                            <div class="content__box">
+                                <div class="content__box-inner">
+                                    <div class="content__box-top">
+                                        <div class="content__time">18:30</div>
+                                        <div class="content__day">20.05.2020</div>
+                                    </div>
+                                    <div class="submain-title"><span class="submain-title__text">Час региона. Вологодская область. "Трансформация системы образования Вологодской области в условиях пандемии. Эффективные управленческие решения"</span></div>
+                                    <div class="content__box-subtitle">Описание описание длинное описание описание длинное описаниеописание длинное описание Описание описание длинное описание описание длинное описаниеописание длинное описание</div>
+                                    <div class="content__box-p">Автономное учреждение дополнительно профессионального образования Ханты-Мансийского автономного округа - Югры "Институт развития образования" </div>
+                                </div>
+                            </div>
+                            <div class="content__box">
+                                <div class="content__box-inner">
+                                    <div class="content__box-top">
+                                        <div class="content__time">18:30</div>
+                                        <div class="content__day">20.05.2020</div>
+                                    </div>
+                                    <div class="submain-title"><span class="submain-title__text">ДВАДЦАТЫЕ. Лекция о том, по каким законам будет жить новый поствирусный мир</span></div>
+                                    <div class="content__box-subtitle">Описание описание длинное описание описание длинное описаниеописание длинное описание Описание описание длинное описание описание длинное описаниеописание длинное описание Описание описание длинное описание описание
+                                        длинное описаниеописание длинное описание</div>
+                                    <div class="content__box-p">Автономное учреждение дополнительно профессионального образования</div>
+                                </div>
+                            </div>
+                            <div class="content__box">
+                                <div class="content__box-inner">
+                                    <div class="content__box-top">
+                                        <div class="content__time">18:30</div>
+                                        <div class="content__day">20.05.2020</div>
+                                    </div>
+                                    <div class="submain-title"><span class="submain-title__text">Час региона. Вологодская область. "Трансформация системы образования Вологодской области</span></div>
+                                    <div class="content__box-subtitle">Описание описание длинное описание описание длинное описаниеописание длинное описание Описание описание длинное описание описание длинное описаниеописание длинное описание Описание описание длинное описание описание
+                                        длинное описаниеописание длинное описание Описание описание длинное описание описание длинное описаниеописание длинное описание Описание описание длинное описание описание длинное описаниеописание длинное описание</div>
+                                    <div class="content__box-p">Автономное учреждение дополнительно профессионального образования</div>
+                                </div>
+                            </div>
+                            <div class="content__box">
+                                <div class="content__box-inner">
+                                    <div class="content__box-top">
+                                        <div class="content__time">18:30</div>
+                                        <div class="content__day">20.05.2020</div>
+                                    </div>
+                                    <div class="submain-title"><span class="submain-title__text">Час региона. Вологодская область. "Трансформация системы образования Вологодской области в условиях пандемии. Эффективные управленческие решения"</span></div>
+                                    <div class="content__box-subtitle">Описание описание длинное описание описание длинное описаниеописание длинное описание</div>
+                                    <div class="content__box-p">Автономное учреждение дополнительно профессионального образования Ханты-Мансийского автономного округа - Югры "Институт развития образования" </div>
+                                </div>
+                            </div>
+                            <div class="content__box">
+                                <div class="content__box-inner">
+                                    <div class="content__box-top">
+                                        <div class="content__time">18:30</div>
+                                        <div class="content__day">20.05.2020</div>
+                                    </div>
+                                    <div class="submain-title"><span class="submain-title__text">ДВАДЦАТЫЕ. Лекция о том, по каким законам будет жить новый поствирусный мир</span></div>
+                                    <div class="content__box-subtitle"></div>
+                                    <div class="content__box-p">Автономное учреждение дополнительно профессионального образования Ханты-Мансийского автономного округа - Югры "Институт развития образования" </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content__baner">
+                            <picture>
+                                <source media="(max-width: 500px)" srcset="assets/images/baner-mobail.jpg">
+                                <source media="(max-width: 768px)" srcset="assets/images/baner-tablet.jpg">
+                                <img class="content__baner-img" src="assets/images/baner.jpg" alt="">
+                            </picture>
+                        </div>
+                        <div class="content__block">
+                            <div class="content__box">
+                                <div class="content__box-inner">
+                                    <div class="content__box-top">
+                                        <div class="content__time">18:30</div>
+                                        <div class="content__day">20.05.2020</div>
+                                    </div>
+                                    <div class="submain-title"><span class="submain-title__text">Час региона. Вологодская область.</span></div>
+                                    <div class="content__box-subtitle">Описание описание длинное описание описание длинное описаниеописание длинное описание</div>
+                                    <div class="content__box-p">Автономное учреждение дополнительно профессионального образования Ханты-Мансийского автономного округа - Югры "Институт развития образования" </div>
+                                </div>
+                            </div>
+                            <div class="content__box">
+                                <div class="content__box-inner">
+                                    <div class="content__box-top">
+                                        <div class="content__time">18:30</div>
+                                        <div class="content__day">20.05.2020</div>
+                                    </div>
+                                    <div class="submain-title"><span class="submain-title__text">Час региона. Вологодская область. "Трансформация системы образования Вологодской области в условиях пандемии. Эффективные управленческие решения"</span></div>
+                                    <div class="content__box-subtitle">Описание описание длинное описание описание длинное описаниеописание длинное описание Описание описание длинное описание описание длинное описаниеописание длинное описание</div>
+                                    <div class="content__box-p">Автономное учреждение дополнительно профессионального образования Ханты-Мансийского автономного округа - Югры "Институт развития образования" </div>
+                                </div>
+                            </div>
+                            <div class="content__box">
+                                <div class="content__box-inner">
+                                    <div class="content__box-top">
+                                        <div class="content__time">18:30</div>
+                                        <div class="content__day">20.05.2020</div>
+                                    </div>
+                                    <div class="submain-title"><span class="submain-title__text">ДВАДЦАТЫЕ. Лекция о том, по каким законам будет жить новый поствирусный мир</span></div>
+                                    <div class="content__box-subtitle">Описание описание длинное описание описание длинное описаниеописание длинное описание Описание описание длинное описание описание длинное описаниеописание длинное описание Описание описание длинное описание описание
+                                        длинное описаниеописание длинное описание</div>
+                                    <div class="content__box-p">Автономное учреждение дополнительно профессионального образования</div>
+                                </div>
+                            </div>
+                            <div class="content__box">
+                                <div class="content__box-inner">
+                                    <div class="content__box-top">
+                                        <div class="content__time">18:30</div>
+                                        <div class="content__day">20.05.2020</div>
+                                    </div>
+                                    <div class="submain-title"><span class="submain-title__text">Час региона. Вологодская область. "Трансформация системы образования Вологодской области</span></div>
+                                    <div class="content__box-subtitle">Описание описание длинное описание описание длинное описаниеописание длинное описание Описание описание длинное описание описание длинное описаниеописание длинное описание Описание описание длинное описание описание
+                                        длинное описаниеописание длинное описание Описание описание длинное описание описание длинное описаниеописание длинное описание Описание описание длинное описание описание длинное описаниеописание длинное описание</div>
+                                    <div class="content__box-p">Автономное учреждение дополнительно профессионального образования</div>
+                                </div>
+                            </div>
+                            <div class="content__box">
+                                <div class="content__box-inner">
+                                    <div class="content__box-top">
+                                        <div class="content__time">18:30</div>
+                                        <div class="content__day">20.05.2020</div>
+                                    </div>
+                                    <div class="submain-title"><span class="submain-title__text">Час региона. Вологодская область. "Трансформация системы образования Вологодской области в условиях пандемии. Эффективные управленческие решения"</span></div>
+                                    <div class="content__box-subtitle">Описание описание длинное описание описание длинное описаниеописание длинное описание</div>
+                                    <div class="content__box-p">Автономное учреждение дополнительно профессионального образования Ханты-Мансийского автономного округа - Югры "Институт развития образования" </div>
+                                </div>
+                            </div>
+                            <div class="content__box">
+                                <div class="content__box-inner">
+                                    <div class="content__box-top">
+                                        <div class="content__time">18:30</div>
+                                        <div class="content__day">20.05.2020</div>
+                                    </div>
+                                    <div class="submain-title"><span class="submain-title__text">ДВАДЦАТЫЕ. Лекция о том, по каким законам будет жить новый поствирусный мир</span></div>
+                                    <div class="content__box-subtitle"></div>
+                                    <div class="content__box-p">Автономное учреждение дополнительно профессионального образования Ханты-Мансийского автономного округа - Югры "Институт развития образования" </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="strip">
+                            <div class="strip__inner">
+                                <a class="strip__prev" href="#">Предыдущая страница</a>
+                                <a class="strip__prev-mobail" href="#">
+                                    <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6.11816 11L1 5.88184L6.11816 0.763672" stroke="#969696"/>
+                                    </svg>
+                                </a>
+                                <div class="strip__numbers">
+                                    <a class="strip__number" href="#">1</a>
+                                    <a class="strip__number strip__number--active" href="#">2</a>
+                                    <a class="strip__number" href="#">3</a>
+                                    <a class="strip__number" href="#">4</a>
+                                    <a class="strip__number" href="#">5</a>
+                                    <a class="strip__number" href="#">6</a>
+                                    <a class="strip__number">...</a>
+                                    <a class="strip__number" href="#">22</a>
+                                    <a class="strip__number" href="#">23</a>
+                                    <a class="strip__number" href="#">24</a>
+                                </div>
+                                <a class="strip__next" href="#">Следубщая страница</a>
+                                <a class="strip__next-mobail" href="#">
+                                    <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.881836 1L6 6.11816L0.881835 11.2363" stroke="#969696"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="content__bottom-baner">
+                            <picture>
+                                <source media="(max-width: 500px)" srcset="assets/images/bottom-baner-mobail.jpg">
+                                <source media="(max-width: 768px)" srcset="assets/images/bottom-baner-tablet.jpg">
+                                <img class="content__bottom-baner-img" src="assets/images/bottom-baner.jpg" alt="">
+                            </picture>
+                        </div>
+                    </div>
+                    <div class="filter main__filter">
+                        <div class="filter__close">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1.54004" y="1" width="18.479" height="1.31993" rx="0.659965" transform="rotate(45 1.54004 1)" fill="#337DF6" stroke="#337DF6" stroke-width="0.6"/>
+                                <rect x="14.6067" y="1.93335" width="18.479" height="1.31993" rx="0.659965" transform="rotate(135 14.6067 1.93335)" fill="#337DF6" stroke="#337DF6" stroke-width="0.6"/>
+                            </svg>
+                        </div>
+                        <div class="submain-title"><span class="submain-title__text">Фильтры</span></div>
+                        <form class="form" action="" method="post" id="exhibitor-filter">
+                            <div class="checkbox filter__checkbox checkbox--open">
+                                <div class="checkbox__title">Экспоненты</div>
+                                <div class="checkbox__inner">
+                                    <div class="checkbox__element">
+                                        <input class="checkbox__element-input" id="c1" type="checkbox" name="checkbox1">
+                                        <label class="checkbox__element-label" for="c1">Название экспонента</label>
+                                    </div>
+                                    <div class="checkbox__element">
+                                        <input class="checkbox__element-input" id="c2" type="checkbox" name="checkbox2">
+                                        <label class="checkbox__element-label" for="c2">Название экспонента</label>
+                                    </div>
+                                    <div class="checkbox__element">
+                                        <input class="checkbox__element-input" id="c3" type="checkbox" name="checkbox3">
+                                        <label class="checkbox__element-label" for="c3">Название экспонента</label>
+                                    </div>
+                                    <div class="checkbox__element">
+                                        <input class="checkbox__element-input" id="c4" type="checkbox" name="checkbox4">
+                                        <label class="checkbox__element-label" for="c4">Название экспонента</label>
+                                    </div>
+                                    <div class="checkbox__element">
+                                        <input class="checkbox__element-input" id="c5" type="checkbox" name="checkbox5">
+                                        <label class="checkbox__element-label" for="c5">Название экспонента</label>
+                                    </div>
+                                    <div class="checkbox__element">
+                                        <input class="checkbox__element-input" id="c6" type="checkbox" name="checkbox6">
+                                        <label class="checkbox__element-label" for="c6">Название экспонента</label>
+                                    </div>
+                                    <div class="checkbox__element">
+                                        <input class="checkbox__element-input" id="c7" type="checkbox" name="checkbox7">
+                                        <label class="checkbox__element-label" for="c7">Название экспонента</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="date filter__date">
+                                <div class="date__title">Даты</div>
+                                <div class="date__inner">
+                                    <input class="date__input" id="i1" type="radio" name="radio2" value="1" checked>
+                                    <label class="date__element date__element--active" for="i1">Все</label>
+                                    <input class="date__input" id="i2" type="radio" name="radio2" value="1">
+                                    <label class="date__element" for="i2">20.05</label>
+                                    <input class="date__input" id="i3" type="radio" name="radio2" value="1">
+                                    <label class="date__element" for="i3">21.05</label>
+                                    <input class="date__input" id="i4" type="radio" name="radio2" value="1">
+                                    <label class="date__element" for="i4">22.05</label>
+                                    <input class="date__input" id="i5" type="radio" name="radio2" value="1">
+                                    <label class="date__element" for="i5">23.05</label>
+                                </div>
+                            </div>
+                            <div class="filter-time exhibitor__filter-time">
+                                <div class="filter-time__title">Время</div>
+                                <div class="filter-time__inner">
+                                    <div class="filter-time__select">
+                                        <span class="filter-time__span">18:00 - 20:00</span>
+                                    </div>
+                                    <input class="filter-time__input" type="hidden" name="time">
+                                    <ul class="filter-time__dropdown">
+                                        <li class="filter-time__element" id="time1">10:00 - 12:00</li>
+                                        <li class="filter-time__element" id="time2">22:00 - 23:00</li>
+                                        <li class="filter-time__element" id="time3">7:30 - 8:00</li>
+                                        <li class="filter-time__element filter-time__element--active" id="time4">18:00 - 20:00</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <button class="filter__reset" type="reset">Сбросить фильтр</button>
+                            <button class="filter__submit" type="submit">Применить</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__cop">2020 Copyright © </div>
+                <a class="footer__agreement" href="#">Пользовательское соглашение и правила пользования сайтом</a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="assets/js/main.min.js"></script>
+</body>
+
+</html>

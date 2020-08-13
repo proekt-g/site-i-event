@@ -3,8 +3,10 @@ document.onreadystatechange = function() {
         if (document.querySelector('.sidebar') !== null && window.innerWidth <= 1220) {
             document.querySelector('.sidebar__content').insertAdjacentElement('afterbegin', document.querySelector('.filter'));
         }
-        if (document.querySelector('main.event') !== null) {
-            document.querySelector('.tags-line').insertAdjacentElement('afterend', document.querySelector('.speakers'));
+        if (document.querySelector('main.event') !== null && window.innerWidth <= 1220) {
+            document.querySelector('.content__mobail').insertAdjacentElement('beforeend', document.querySelector('.speakers'));
+            document.querySelector('.content__mobail').insertAdjacentElement('beforeend', document.querySelector('.content__info-inner'));
+            document.querySelector('.content__material').insertAdjacentElement('afterend', document.querySelector('.content__info-bottom'));
         }
     }
 }
@@ -27,7 +29,43 @@ window.addEventListener('load', function() {
         $checkboxElementInput = document.querySelectorAll('.checkbox__element-input'),
         $choiseElementInput = document.querySelectorAll('.choise__element-input'),
         $buttonUp = document.querySelector('.button-up'),
-        $contentMore = document.querySelector('.content__more');
+        $contentMore = document.querySelector('.content__more'),
+        $speakersTopMore = document.querySelector('.speakers__top-more'),
+        $speakersInner = document.querySelector('.speakers__inner'),
+        $swiperContainer = document.querySelector('.swiper-container'),
+        $infoTextMore = document.querySelector('.info__text-more'),
+        $filterTimeDropdown = document.querySelector('.filter-time__dropdown'),
+        $filterTime = document.querySelector('.filter-time'),
+        $filterTimeElement = document.querySelectorAll('.filter-time__element'),
+        $filterTimeInput = document.querySelector('.filter-time__input');
+
+    let swiperBrend,
+        swiperExpo;
+
+    if ($swiperContainer !== null) {
+        if (document.querySelector('main.main') !== null) {
+            swiperBrend = new Swiper('.partners', {
+                spaceBetween: 5,
+                slidesPerView: 'auto',
+                slidesOffsetBefore: 15,
+                breakpoints: {
+                    501: {
+                        spaceBetween: 10
+                    }
+                }
+
+            });
+            swiperExpo = new Swiper('.expo__block', {
+                spaceBetween: 20,
+                slidesPerView: 'auto',
+                slidesOffsetBefore: 15,
+            });
+            if (window.innerWidth <= 500) swiperExpo.destroy(true, true);
+
+        }
+    }
+
+
 
 
     function autoDetectHeight(_element, coef = 0, startHeight = 0) {
@@ -98,7 +136,7 @@ window.addEventListener('load', function() {
     }
 
     function checkScroll() {
-        if (window.scrollY > window.innerHeight) $buttonUp.classList.add('button-up--active');
+        if (window.scrollY > window.innerHeight / 1.5) $buttonUp.classList.add('button-up--active');
         else $buttonUp.classList.remove('button-up--active');
     }
 
@@ -169,13 +207,41 @@ window.addEventListener('load', function() {
     window.addEventListener('scroll', checkScroll, false);
     if ($buttonUp !== null) $buttonUp.addEventListener('click', upPage);
     if ($contentMore !== null) {
-        $contentMore.addEventListener('click', autoDetectHeight.bind(null, document.querySelector('.content__text'), undefined, 36), false);
+        if (window.innerWidth > 500) $contentMore.addEventListener('click', autoDetectHeight.bind(null, document.querySelector('.content__text'), undefined, 36), false);
+        else $contentMore.addEventListener('click', autoDetectHeight.bind(null, document.querySelector('.content__text'), undefined, 32), false);
         $contentMore.addEventListener('click', renameContentText.bind(null, $contentMore, 'Скрыть', 'Показать полностью'))
     }
+    if ($speakersTopMore !== null) {
+        $speakersTopMore.addEventListener('click', autoDetectHeight.bind(null, $speakersInner, 20, 325), false);
+        $speakersTopMore.addEventListener('click', renameContentText.bind(null, $speakersTopMore, 'Скрыть', 'Показать всех'), false);
+    }
+    if ($infoTextMore !== null) {
+        if (window.innerWidth > 500) $infoTextMore.addEventListener('click', autoDetectHeight.bind(null, document.querySelector('.info__text-p'), 0, 55), false);
+        else $infoTextMore.addEventListener('click', autoDetectHeight.bind(null, document.querySelector('.info__text-p'), 0, 108), false);
+        $infoTextMore.addEventListener('click', renameContentText.bind(null, $infoTextMore, 'Скрыть', 'Показать полностью'), false);
+    }
+    if ($filterTime !== null) {
+        $filterTime.addEventListener('click', autoDetectHeight.bind(null, $filterTimeDropdown, 0, 0), false);
+        $filterTime.addEventListener('click', addModifierOpen.bind(null, document.querySelector('.filter-time__inner')), false);
+    }
+
+    if ($filterTimeElement !== null) $filterTimeElement.forEach(function(item) {
+        item.addEventListener('click', renameContentText.bind(null, document.querySelector('.filter-time__span'), item.textContent, undefined), false);
+        item.addEventListener('click', choiseTimeElement);
+        if (window.innerWidth > 500) item.addEventListener('click', ajaxRequest.bind(null, item.closest('.form').className, 'test.php'), false);
+        item.addEventListener('click', addModifierActive.bind(null, item, 1), false)
+    });
 
 
 
 
+
+
+
+
+    function choiseTimeElement() {
+        $filterTimeInput.value = this.id;
+    }
 
     function checkEventTargetSidebar() {
         if (event.target === this) {
@@ -210,5 +276,16 @@ window.addEventListener('load', function() {
 
 
 
+
+
+
+    if ($speakersInner !== null && window.innerWidth <= 1220) {
+        let buffValue = 0;
+        $speakersInner.childNodes.forEach(function(item) {
+            if (item.offsetHeight !== undefined) buffValue++;
+        });
+        console.log($speakersInner.childNodes.length);
+        if (buffValue <= 4) $speakersTopMore.style.display = 'none';
+    }
     filterHeight();
 });
