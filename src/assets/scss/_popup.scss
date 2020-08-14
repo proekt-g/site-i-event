@@ -1,0 +1,176 @@
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 120;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    backface-visibility: hidden;
+    transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1), visibility 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+    &--active {
+        opacity: 1;
+        visibility: visible;
+    }
+    &__box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        margin: 0 auto;
+        background-color: #fff;
+        opacity: 0;
+        overflow-y: auto;
+        visibility: hidden;
+        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.15);
+        backface-visibility: hidden;
+        transform: scale(1.2);
+        transition: all 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+        max-width: 785px;
+        width: 100%;
+        @media(max-width: 768px) {
+            max-width: 708px;
+        }
+        @media(max-width: 500px) {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 0;
+            padding: 0 !important;
+        }
+        &--active {
+            visibility: visible;
+            opacity: 1;
+            transform: scale(1);
+            .modal__content {
+                opacity: 1;
+            }
+            .modal__close {
+                transform: translateY(10px);
+                opacity: 1;
+                @media(max-width: 500px) {
+                    right: 20px !important;
+                }
+            }
+        }
+    }
+    &__close {
+        position: absolute;
+        cursor: pointer;
+        top: 5px;
+        right: 15px;
+        opacity: 0;
+        backface-visibility: hidden;
+        transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1), transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+        transition-delay: 0.3s;
+        svg {
+            width: 1.75em;
+            height: 1.75em;
+        }
+    }
+    &__content {
+        text-align: center;
+        opacity: 0;
+        backface-visibility: hidden;
+        transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+        transition-delay: 0.3s;
+        width: 100%;
+        padding: 50px 60px 35px 60px;
+        @media(max-width: 500px) {
+            text-align: left;
+            padding: 50px 20px 35px 20px;
+        }
+    }
+    &__form {
+        margin-top: 60px;
+        @media(max-width: 500px) {
+            margin-top: 25px;
+        }
+        &-name {
+            text-align: left;
+            opacity: 0.8;
+            color: $submainColor;
+            font-size: 12px;
+            font-weight: 500;
+            @media(max-width: 500px) {
+                font-size: 10px;
+            }
+        }
+        &-input {
+            border-bottom: 1px solid #e5e5e5;
+            max-width: 100%;
+            width: 100%;
+            padding: 10px 0;
+            color: #000000;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            @media(max-width: 500px) {
+                margin-bottom: 25px;
+                padding: 5px 0 8px;
+                font-size: 14px;
+            }
+        }
+        &-btn {
+            display: block;
+            line-height: 41px;
+            height: 45px;
+            border: 2px solid $siteColor;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: .3s;
+            padding: 0 60px;
+            margin: 10px 5px 0;
+            width: 250px;
+            color: $siteColor;
+            @media(max-width: 500px) {
+                font-weight: 500;
+                padding: 0;
+                width: 100%;
+                text-align: center;
+            }
+            &--blue {
+                background-color: $siteColor;
+                color: #ffffff;
+                &:hover {
+                    color: $siteColor!important;
+                    background-color: transparent!important;
+                }
+            }
+            &:hover {
+                color: #ffffff;
+                background-color: $siteColor;
+            }
+        }
+    }
+    &__button {
+        display: flex;
+        justify-content: center;
+        @media(max-width: 500px) {
+            display: block;
+        }
+    }
+    &__miss {
+        font-size: 12px;
+        opacity: 0.6;
+        margin-top: 20px;
+        display: block;
+        transition: .3s;
+        @media(max-width: 500px) {
+            font-size: 10px;
+            text-align: center;
+        }
+        &:hover {
+            color: $siteColor;
+        }
+    }
+}

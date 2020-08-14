@@ -33,14 +33,22 @@ window.addEventListener('load', function() {
         $speakersTopMore = document.querySelector('.speakers__top-more'),
         $speakersInner = document.querySelector('.speakers__inner'),
         $swiperContainer = document.querySelector('.swiper-container'),
-        $infoTextMore = document.querySelector('.info__text-more'),
+        $infoTextMore = document.querySelectorAll('.info__text-more'),
         $filterTimeDropdown = document.querySelector('.filter-time__dropdown'),
         $filterTime = document.querySelector('.filter-time'),
         $filterTimeElement = document.querySelectorAll('.filter-time__element'),
-        $filterTimeInput = document.querySelector('.filter-time__input');
+        $filterTimeInput = document.querySelector('.filter-time__input'),
+        $formRegistrationBtn = document.querySelector('.form__registration-btn'),
+        $comentsForm = document.querySelector('.coments__form'),
+        $modal = document.querySelector('.modal'),
+        $modalFormBtn = document.querySelector('.modal__form-btn'),
+        $modalClose = document.querySelector('.modal__close'),
+        $contentAlphabetElement = document.querySelectorAll('.content__alphabet-element'),
+        $contentFilterElementPage = document.querySelectorAll('.content__filter-element--page');
 
     let swiperBrend,
-        swiperExpo;
+        swiperExpo,
+        swiperExhebitorEvent;
 
     if ($swiperContainer !== null) {
         if (document.querySelector('main.main') !== null) {
@@ -61,7 +69,14 @@ window.addEventListener('load', function() {
                 slidesOffsetBefore: 15,
             });
             if (window.innerWidth <= 500) swiperExpo.destroy(true, true);
-
+        }
+        if (document.querySelector('main.exhibitor-event') !== null) {
+            swiperExhebitorEvent = new Swiper('.swiper-container', {
+                spaceBetween: 20,
+                slidesPerView: 'auto',
+                slidesOffsetBefore: 15,
+            });
+            if (window.innerWidth <= 500) swiperExhebitorEvent.destroy(true, true);
         }
     }
 
@@ -120,6 +135,7 @@ window.addEventListener('load', function() {
     }
 
     function ajaxRequest(ajaxForm, url) {
+        // event.preventDefault();
         $.ajax({
             url: url,
             type: "POST",
@@ -136,8 +152,11 @@ window.addEventListener('load', function() {
     }
 
     function checkScroll() {
-        if (window.scrollY > window.innerHeight / 1.5) $buttonUp.classList.add('button-up--active');
-        else $buttonUp.classList.remove('button-up--active');
+        if ($buttonUp !== null) {
+            if ((window.scrollY > window.innerHeight / 1.5)) $buttonUp.classList.add('button-up--active');
+            else $buttonUp.classList.remove('button-up--active');
+        }
+
     }
 
     function upPage() {
@@ -216,9 +235,12 @@ window.addEventListener('load', function() {
         $speakersTopMore.addEventListener('click', renameContentText.bind(null, $speakersTopMore, 'Скрыть', 'Показать всех'), false);
     }
     if ($infoTextMore !== null) {
-        if (window.innerWidth > 500) $infoTextMore.addEventListener('click', autoDetectHeight.bind(null, document.querySelector('.info__text-p'), 0, 55), false);
-        else $infoTextMore.addEventListener('click', autoDetectHeight.bind(null, document.querySelector('.info__text-p'), 0, 108), false);
-        $infoTextMore.addEventListener('click', renameContentText.bind(null, $infoTextMore, 'Скрыть', 'Показать полностью'), false);
+        $infoTextMore.forEach(function(item, index) {
+            if (window.innerWidth > 500) item.addEventListener('click', autoDetectHeight.bind(null, document.querySelectorAll('.info__text-p')[index], 0, 55), false);
+            else item.addEventListener('click', autoDetectHeight.bind(null, document.querySelectorAll('.info__text-p')[index], 0, 108), false);
+            item.addEventListener('click', renameContentText.bind(null, item, 'Скрыть', 'Показать полностью'), false);
+        });
+
     }
     if ($filterTime !== null) {
         $filterTime.addEventListener('click', autoDetectHeight.bind(null, $filterTimeDropdown, 0, 0), false);
@@ -231,12 +253,26 @@ window.addEventListener('load', function() {
         if (window.innerWidth > 500) item.addEventListener('click', ajaxRequest.bind(null, item.closest('.form').className, 'test.php'), false);
         item.addEventListener('click', addModifierActive.bind(null, item, 1), false)
     });
-
-
-
-
-
-
+    // Форма Регистрации
+    if ($formRegistrationBtn !== null) $formRegistrationBtn.addEventListener('click', ajaxRequest.bind(null, $formRegistrationBtn.closest('form').className, 'test.php'), false);
+    // /Форма Регистрации
+    // Форма отправки комментария (страница Мероприятие)
+    if ($comentsForm !== null) $comentsForm.addEventListener('submit', ajaxRequest.bind(null, $comentsForm.className, 'test.php'), false);
+    // /Форма отправки комментария (страница Мероприятие)
+    // Форма входа
+    if ($modalFormBtn !== null) $modalFormBtn.addEventListener('click', ajaxRequest.bind(null, $modalFormBtn.closest('form').className, 'test.php'), false);
+    // /Форма входа
+    if ($modalClose !== null) $modalClose.addEventListener('click', openModal);
+    // Форма на странице page.html (в макете "Экспоненты 1921")
+    if ($contentAlphabetElement !== null) $contentAlphabetElement.forEach(function(item) {
+        item.addEventListener('click', ajaxRequest.bind(null, item.closest('form').className, 'test.php'), false); //Это алфавит
+        item.addEventListener('click', addModifierActive.bind(null, item, 1), false);
+    });
+    if ($contentFilterElementPage !== null) $contentFilterElementPage.forEach(function(item) {
+        item.addEventListener('click', addModifierActive.bind(null, item, 1), false);
+        item.addEventListener('click', ajaxRequest.bind(null, item.closest('form').className, 'test.php'), false); //Это Все/Мои/Рекомендованные
+    });
+    // /Форма на странице page.html (в макете "Экспоненты 1921")
 
 
     function choiseTimeElement() {
@@ -273,18 +309,28 @@ window.addEventListener('load', function() {
             autoDetectHeight(item.querySelector('.checkbox__inner'), 15);
         });
     }
+    // Функция вызова окна входа
+    function openModal() {
+        addModifierActive($modal);
+        addModifierActive($modal.querySelector('.modal__box'));
+
+    }
+    // /Функция вызова окна входа
 
 
 
 
 
 
+
+    // Вызов окна входа
+    if ($modal !== null) openModal();
+    // /Вызов окна входа
     if ($speakersInner !== null && window.innerWidth <= 1220) {
         let buffValue = 0;
         $speakersInner.childNodes.forEach(function(item) {
             if (item.offsetHeight !== undefined) buffValue++;
         });
-        console.log($speakersInner.childNodes.length);
         if (buffValue <= 4) $speakersTopMore.style.display = 'none';
     }
     filterHeight();

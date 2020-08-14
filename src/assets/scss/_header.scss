@@ -118,4 +118,30 @@
         max-width: 100%;
         border-radius: 50%;
     }
+    &__btn {
+        display: block;
+        line-height: 41px;
+        height: 45px;
+        background: $siteColor;
+        border: 2px solid $siteColor;
+        border-radius: 5px;
+        color: #FFFFFF;
+        font-weight: 600;
+        font-size: 12px;
+        padding: 0 34px;
+        transition: .3s;
+        &:hover {
+            color: $siteColor;
+            background-color: #fff;
+        }
+        @media(max-width: 500px) {
+            line-height: 1;
+            background: transparent;
+            border: none;
+            font-size: 10px;
+            height: auto;
+            color: $siteColor;
+            padding: 0;
+        }
+    }
 }
