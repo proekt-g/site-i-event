@@ -5,11 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/style.min.css">
     <title>Document</title>
 </head>
 
 <body>
+    <aside class="button-up">
+        <div class="button-up__img">
+            <svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 8L7.5 2L1 8" stroke="#337DF6" stroke-width="2"/>
+            </svg>
+        </div>
+    </aside>
     <header class="header" id="header">
         <div class="layer">
             <div class="container">
@@ -22,9 +30,9 @@
                         </picture>
                     </a>
                     <nav class="header__menu">
-                        <a class="header__menu-element header__menu-element--active" href="#">Программа</a>
+                        <a class="header__menu-element " href="#">Программа</a>
                         <a class="header__menu-element" href="#">Спикеры</a>
-                        <a class="header__menu-element" href="#">Трансляции</a>
+                        <a class="header__menu-element header__menu-element--active" href="#">Трансляции</a>
                         <a class="header__menu-element" href="#">Экспоненты</a>
                         <a class="header__menu-element" href="#">Новости</a>
                     </nav>
@@ -73,28 +81,59 @@
             <a class="header__menu-element" href="#">Новости</a>
         </nav>
     </header>
-    <main class="registration">
-        <div class="container">
-            <section class="form">
-                <div class="form__title">Регистрация</div>
-                <form class="form__registration" action="" method="post" id="registration-filter">
-                    <div class="input-name form__registration-name">Имя</div>
-                    <input class="input-square form__registration-input" type="text" name='name'>
-                    <div class="input-name form__registration-name">Фамилия</div>
-                    <input class="input-square form__registration-input" type="text" name='surname'>
-                    <div class="input-name form__registration-name">Почта / телефон</div>
-                    <input class="input-square form__registration-input" type="text" name='phone'>
-                    <div class="input-name form__registration-name">Пароль</div>
-                    <input class="input-square form__registration-input" type="password" name='password'>
-                    <div class="input-name form__registration-name">Подтвердите пароль</div>
-                    <input class="input-square form__registration-input" type="password" name='rep-password'>
-                    <button class="form__registration-btn" type="submit">Зарегистрироваться</button>
-                </form>
-                <a class="form__link" href="#">Войти</a>
-            </section>
-        </div>
+    <main class="speaker">
+        <section class="crumbs">
+            <div class="container">
+                <div class="crumbs__inner">
+                    <a class="crumbs__element" href="#">Главаня -</a>
+                    <a class="crumbs__element crumbs__element--current" href="#">Личный кабинет</a>
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <div class="container">
+                <div class="content__inner">
+                    <div class="content__photo">
+                        <div class="user-avatar">
+                            <div class="user-avatar__img">КК</div>
+                        </div>
+                        <div class="content__switch">Изменить фото</div>
+                    </div>
+                    <form class="content__form" action="" method="post" id="profile-change">
+                        <div class="input-name">Фамилия</div>
+                        <input class="input-square " type="text" name='surname'>
+                        <div class="input-name ">Имя</div>
+                        <input class="input-square input-square--bottom" type="text" name='name'>
+                        <div class="input-name ">Название организациия</div>
+                        <input class="input-square " type="text" name='company'>
+                        <div class="input-name ">Должность</div>
+                        <input class="input-square " type="text" name='position'>
+                        <div class="input-name ">Город</div>
+                        <input class="input-square " type="text" name='city'>
+                        <div class="input-name ">О себе</div>
+                        <textarea class="content__form-textarea" name="about"></textarea>
+                        <div class="input-name ">Текущий пароль</div>
+                        <input class="input-square " type="password" name='password'>
+                        <div class="input-name ">Новый пароль</div>
+                        <input class="input-square " type="password" name='new-password'>
+                        <div class="input-name ">Повторить пароль</div>
+                        <input class="input-square " type="password" name='repeat-password'>
+                        <button class="content__form-btn" type="submit">Сохранить</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
+    <footer class="footer" style="background-color: #fff;">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__cop">2020 Copyright © </div>
+                <a class="footer__agreement" href="#">Пользовательское соглашение и правила пользования сайтом</a>
+            </div>
+        </div>
+    </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="assets/js/main.min.js"></script>
 </body>
 

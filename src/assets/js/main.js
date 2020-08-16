@@ -8,6 +8,9 @@ document.onreadystatechange = function() {
             document.querySelector('.content__mobail').insertAdjacentElement('beforeend', document.querySelector('.content__info-inner'));
             document.querySelector('.content__material').insertAdjacentElement('afterend', document.querySelector('.content__info-bottom'));
         }
+        if (document.querySelector('.favorites__settings') !== null && window.innerWidth <= 700) {
+            document.querySelector('.favorites__top').insertAdjacentElement('afterend', document.querySelector('.favorites__settings'));
+        }
     }
 }
 window.addEventListener('load', function() {
@@ -44,11 +47,22 @@ window.addEventListener('load', function() {
         $modalFormBtn = document.querySelector('.modal__form-btn'),
         $modalClose = document.querySelector('.modal__close'),
         $contentAlphabetElement = document.querySelectorAll('.content__alphabet-element'),
-        $contentFilterElementPage = document.querySelectorAll('.content__filter-element--page');
+        $contentFilterElementPage = document.querySelectorAll('.content__filter-element--page'),
+        $pageFilter = document.querySelector('.page-filter'),
+        $pageFilterElement = document.querySelectorAll('.page-filter__element'),
+        $pageFilterSubmit = document.querySelector('.page-filter__submit'),
+        $favoritesFilterElement = document.querySelectorAll('.favorites__filter-element'),
+        $favoritesFilterSubmit = document.querySelector('.favorites__filter-submit'),
+        $contentFormBtn = document.querySelector('.content__form-btn'),
+        $infoMore = document.querySelector('.info__more'),
+        $speakersFilterAlphabetLetter = document.querySelectorAll('.speakers-filter__alphabet-letter'),
+        $speakersFilterElement = document.querySelectorAll('.speakers-filter__element'),
+        $speakersFilterSubmit = document.querySelector('.speakers-filter__submit');
 
     let swiperBrend,
         swiperExpo,
-        swiperExhebitorEvent;
+        swiperExhebitorEvent,
+        swiperPageSpeaker;
 
     if ($swiperContainer !== null) {
         if (document.querySelector('main.main') !== null) {
@@ -77,6 +91,14 @@ window.addEventListener('load', function() {
                 slidesOffsetBefore: 15,
             });
             if (window.innerWidth <= 500) swiperExhebitorEvent.destroy(true, true);
+        }
+        if (document.querySelector('main.page-speaker') !== null) {
+            swiperPageSpeaker = new Swiper('.swiper-container', {
+                spaceBetween: 20,
+                slidesPerView: 'auto',
+                slidesOffsetBefore: 15,
+            });
+            if (window.innerWidth <= 500) swiperPageSpeaker.destroy(true, true);
         }
     }
 
@@ -186,11 +208,11 @@ window.addEventListener('load', function() {
     });
     if ($dateElement !== null) $dateElement.forEach(function(item) {
         item.addEventListener('click', addModifierActive.bind(null, item, true), false);
-        if (window.innerWidth > 1220) item.addEventListener('click', ajaxRequest.bind(null, $filterSubmit.closest('.form').className, 'test.php'), false);
+        // if (window.innerWidth > 1220) item.addEventListener('click', ajaxRequest.bind(null, $filterSubmit.closest('.form').className, 'test.php'), false);
     });
     if ($tagsElementLabel !== null) $tagsElementLabel.forEach(function(item) {
         item.addEventListener('click', addModifierActive.bind(null, item, undefined), false);
-        if (window.innerWidth > 1220) item.addEventListener('click', ajaxRequest.bind(null, $filterSubmit.closest('.form').className, 'test.php'), false);
+        // if (window.innerWidth > 1220) item.addEventListener('click', ajaxRequest.bind(null, $filterSubmit.closest('.form').className, 'test.php'), false);
     });
     if ($tagsMore !== null) {
         $tagsMore.addEventListener('click', renameContentText.bind(null, $tagsMore, 'Скрыть', 'Показать все'), false);
@@ -212,16 +234,16 @@ window.addEventListener('load', function() {
         $filterClose.addEventListener('click', addModifierOpen.bind(null, [$sidebar, document.querySelector('.sidebar__content')]), false);
         $filterClose.addEventListener('click', blockBody, false);
     }
-    if ($filterSubmit !== null) $filterSubmit.addEventListener('click', ajaxRequest.bind(null, $filterSubmit.closest('.form').className, 'test.php'), false);
+    // if ($filterSubmit !== null) $filterSubmit.addEventListener('click', ajaxRequest.bind(null, $filterSubmit.closest('.form').className, 'test.php'), false);
     if (window.innerWidth > 1220 && $checkboxElementInput !== null) {
-        $checkboxElementInput.forEach(function(item) {
-            item.addEventListener('input', ajaxRequest.bind(null, $filterSubmit.closest('.form').className, 'test.php'), false);
-        });
+        // $checkboxElementInput.forEach(function(item) {
+        //     item.addEventListener('input', ajaxRequest.bind(null, $filterSubmit.closest('.form').className, 'test.php'), false);
+        // });
     }
     if (window.innerWidth > 1220 && $choiseElementInput !== null) {
-        $choiseElementInput.forEach(function(item) {
-            item.addEventListener('input', ajaxRequest.bind(null, $filterSubmit.closest('.form').className, 'test.php'), false);
-        });
+        // $choiseElementInput.forEach(function(item) {
+        //     item.addEventListener('input', ajaxRequest.bind(null, $filterSubmit.closest('.form').className, 'test.php'), false);
+        // });
     }
     window.addEventListener('scroll', checkScroll, false);
     if ($buttonUp !== null) $buttonUp.addEventListener('click', upPage);
@@ -253,6 +275,19 @@ window.addEventListener('load', function() {
         if (window.innerWidth > 500) item.addEventListener('click', ajaxRequest.bind(null, item.closest('.form').className, 'test.php'), false);
         item.addEventListener('click', addModifierActive.bind(null, item, 1), false)
     });
+    if ($infoMore !== null) {
+        $infoMore.addEventListener('click', renameContentText.bind(null, $infoMore, 'Скрыть', 'Показать полностью'), false);
+        if (window.innerWidth >= 500) $infoMore.addEventListener('click', autoDetectHeight.bind(null, document.querySelector('.info__text'), 0, 60), false);
+        else $infoMore.addEventListener('click', autoDetectHeight.bind(null, document.querySelector('.info__text'), 0, 114), false);
+    };
+    if ($modalClose !== null) $modalClose.addEventListener('click', openModal);
+    if ($speakersFilterAlphabetLetter !== null) $speakersFilterAlphabetLetter.forEach(function(item) {
+        item.addEventListener('click', addModifierActive.bind(null, item, 1), false)
+    });
+
+
+
+    // ************** Формы
     // Форма Регистрации
     if ($formRegistrationBtn !== null) $formRegistrationBtn.addEventListener('click', ajaxRequest.bind(null, $formRegistrationBtn.closest('form').className, 'test.php'), false);
     // /Форма Регистрации
@@ -262,7 +297,6 @@ window.addEventListener('load', function() {
     // Форма входа
     if ($modalFormBtn !== null) $modalFormBtn.addEventListener('click', ajaxRequest.bind(null, $modalFormBtn.closest('form').className, 'test.php'), false);
     // /Форма входа
-    if ($modalClose !== null) $modalClose.addEventListener('click', openModal);
     // Форма на странице page.html (в макете "Экспоненты 1921")
     if ($contentAlphabetElement !== null) $contentAlphabetElement.forEach(function(item) {
         item.addEventListener('click', ajaxRequest.bind(null, item.closest('form').className, 'test.php'), false); //Это алфавит
@@ -272,7 +306,30 @@ window.addEventListener('load', function() {
         item.addEventListener('click', addModifierActive.bind(null, item, 1), false);
         item.addEventListener('click', ajaxRequest.bind(null, item.closest('form').className, 'test.php'), false); //Это Все/Мои/Рекомендованные
     });
+    if ($pageFilterElement !== null) $pageFilterElement.forEach(function(item) {
+        if (window.innerWidth > 1220) item.addEventListener('input', ajaxRequest.bind(null, item.closest('form').className, 'test.php'), false); //Это все параметры правой плашки
+    });
+    if ($pageFilterSubmit !== null) $pageFilterSubmit.addEventListener('click', ajaxRequest.bind(null, $pageFilterSubmit.closest('form').className, 'test.php'), false); //Это все параметры правой плашки при нажатии на применить (в моб. версии)
     // /Форма на странице page.html (в макете "Экспоненты 1921")
+    // Форма на странице favorites.html (в макете "Избранное 1921")
+    if ($favoritesFilterElement !== null) $favoritesFilterElement.forEach(function(item) {
+        if (window.innerWidth > 1220) item.addEventListener('input', ajaxRequest.bind(null, item.closest('form').className, 'test.php'), false); //Это все параметры правой плашки
+    });
+    if ($favoritesFilterSubmit !== null) $favoritesFilterSubmit.addEventListener('click', ajaxRequest.bind(null, $favoritesFilterSubmit.closest('form').className, 'test.php'), false); //Это все параметры правой плашки при нажатии на применить (в моб. версии)
+    // /Форма на странице favorites.html (в макете "Избранное 1921")
+    // Форма на странице спикера (speaker.html, в макете: Страница спикера 1924)
+    if ($contentFormBtn !== null) $contentFormBtn.addEventListener('click', ajaxRequest.bind(null, $contentFormBtn.closest('form').className, 'test.php'), false);
+    // /Форма на странице спикера (speaker.html, в макете: Страница спикера 1924)
+    // Форма на странице speakers.html (в макете "Спикеры 1922")
+    if ($speakersFilterElement !== null) $speakersFilterElement.forEach(function(item) {
+        if (window.innerWidth > 1220) item.addEventListener('input', ajaxRequest.bind(null, item.closest('form').className, 'test.php'), false); //Это все параметры правой плашки
+    });
+    if ($speakersFilterSubmit !== null) $speakersFilterSubmit.addEventListener('click', ajaxRequest.bind(null, $speakersFilterSubmit.closest('form').className, 'test.php'), false); //Это все параметры правой плашки при нажатии на применить (в моб. версии)
+    // Форма на странице speakers.html (в макете "Спикеры 1922")
+    // ************** /Формы
+
+
+
 
 
     function choiseTimeElement() {

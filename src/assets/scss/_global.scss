@@ -69,6 +69,27 @@ main {
     @media(max-width: 500px) {
         font-size: 16px;
     }
+    &__text {
+        &:first-child {
+            margin-right: 30px;
+        }
+        &--active {
+            color: $siteColor;
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 278px;
+                height: 1px;
+                border-radius: 1px;
+                background-color: $siteColor;
+                @media(max-width: 500px) {
+                    width: 221px;
+                }
+            }
+        }
+    }
 }
 
 .subtitle {
@@ -115,6 +136,9 @@ main {
     }
     &--ping {
         background-color: #ffa9d7;
+    }
+    &--green {
+        background-color: #84d27d;
     }
     &--more {
         border: 1px solid #cacaca;
@@ -369,6 +393,33 @@ main {
     }
 }
 
+.search-input {
+    position: relative;
+    &__inner {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 10px;
+        border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+        background-color: transparent;
+        padding: 10px 20px 10px 0;
+        font-size: 14px;
+        font-weight: 400;
+        position: relative;
+        &::placeholder {
+            color: $submainColor;
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+    &::after {
+        position: absolute;
+        content: url(../images/Search.svg);
+        right: 0;
+        top: 50%;
+        transform: translate( 0, -50%);
+    }
+}
+
 .choise {
     position: relative;
     margin-top: 20px;
@@ -506,6 +557,7 @@ main {
         font-size: 16px;
         font-weight: 500;
         margin-bottom: 20px;
+        padding-right: 10px;
         @media(max-width: 500px) {
             font-size: 14px;
             font-weight: 600;
@@ -727,6 +779,7 @@ main {
         justify-content: center;
         align-items: center;
         border-radius: 50%;
+        transition: .3s;
     }
 }
 
@@ -1035,5 +1088,60 @@ main {
         &:active {
             background-color: #f8f8f8;
         }
+    }
+}
+
+.input-name {
+    opacity: 0.8;
+    color: $submainColor;
+    font-size: 12px;
+    font-weight: 500;
+    @media(max-width: 500px) {
+        font-size: 10px;
+    }
+}
+
+.input-square {
+    border-bottom: 1px solid #e5e5e5;
+    max-width: 100%;
+    width: 100%;
+    padding: 10px 0;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    &--bottom {
+        margin-bottom: 60px!important;
+        @media(max-width: 500px) {
+            margin-bottom: 50px;
+        }
+    }
+    @media(max-width: 500px) {
+        margin-bottom: 25px;
+        padding: 5px 0 8px;
+        font-size: 14px;
+    }
+}
+
+.user-avatar {
+    min-width: 167px;
+    min-height: 167px;
+    max-width: 167px;
+    max-height: 167px;
+    height: 167px;
+    background-color: #84d27d;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 600;
+    @media(max-width: 500px) {
+        min-width: 98px;
+        min-height: 98px;
+        font-size: 18px;
+        max-width: 98px;
+        max-height: 98px;
     }
 }

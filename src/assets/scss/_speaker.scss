@@ -1,0 +1,81 @@
+.speaker {
+    .content {
+        margin-top: 35px;
+        padding-bottom: 50px;
+        @media(max-width: 500px) {
+            margin-top: 22px;
+            padding-bottom: 0;
+        }
+        &__inner {
+            display: flex;
+            @media(max-width: 700px) {
+                display: block;
+            }
+        }
+        &__photo {
+            flex: 0 0 167px;
+        }
+        &__switch {
+            margin-top: 15px;
+            text-align: center;
+            opacity: 0.8;
+            color: $submainColor;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            @media(max-width: 1280px) {
+                display: none;
+            }
+        }
+        &__form {
+            flex: 0 1 808px;
+            margin-left: 60px;
+            margin-top: 15px;
+            @media(max-width: 700px) {
+                margin-left: 0;
+                margin-top: 25px;
+            }
+            .input-square {
+                margin-bottom: 35px;
+                @media(max-width: 500px) {
+                    margin-bottom: 25px;
+                }
+            }
+            &-textarea {
+                max-width: 808px;
+                height: 200px;
+                width: 100%;
+                border: 1px solid #e5e5e5;
+                resize: none;
+                margin: 10px 0 60px;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 19.6px;
+                padding: 20px;
+            }
+            &-btn {
+                display: inline-block;
+                line-height: 45px;
+                height: 45px;
+                padding: 0 84px;
+                border-radius: 5px;
+                background-color: $siteColor;
+                color: #ffffff;
+                font-size: 12px;
+                font-weight: 600;
+                transition: .3s;
+                @media(max-width: 500px) {
+                    width: 100%;
+                    text-align: center;
+                }
+                &:hover {
+                    border-radius: 0;
+                    box-shadow: 0 0 3px 0px #000;
+                }
+            }
+            &--bottom {
+                margin-bottom: 60px;
+            }
+        }
+    }
+}
