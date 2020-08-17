@@ -1,7 +1,9 @@
 document.onreadystatechange = function() {
     if (document.readyState === "interactive") {
         if (document.querySelector('.sidebar') !== null && window.innerWidth <= 1220) {
-            document.querySelector('.sidebar__content').insertAdjacentElement('afterbegin', document.querySelector('.filter'));
+            if (document.querySelector('main.broadcast') !== null) {
+                console.log('lll');
+            } else document.querySelector('.sidebar__content').insertAdjacentElement('afterbegin', document.querySelector('.filter'));
         }
         if (document.querySelector('main.event') !== null && window.innerWidth <= 1220) {
             document.querySelector('.content__mobail').insertAdjacentElement('beforeend', document.querySelector('.speakers'));
@@ -42,7 +44,7 @@ window.addEventListener('load', function() {
         $filterTimeElement = document.querySelectorAll('.filter-time__element'),
         $filterTimeInput = document.querySelector('.filter-time__input'),
         $formRegistrationBtn = document.querySelector('.form__registration-btn'),
-        $comentsForm = document.querySelector('.coments__form'),
+        $comentsForm = document.querySelector('.event__form'),
         $modal = document.querySelector('.modal'),
         $modalFormBtn = document.querySelector('.modal__form-btn'),
         $modalClose = document.querySelector('.modal__close'),
@@ -57,7 +59,11 @@ window.addEventListener('load', function() {
         $infoMore = document.querySelector('.info__more'),
         $speakersFilterAlphabetLetter = document.querySelectorAll('.speakers-filter__alphabet-letter'),
         $speakersFilterElement = document.querySelectorAll('.speakers-filter__element'),
-        $speakersFilterSubmit = document.querySelector('.speakers-filter__submit');
+        $speakersFilterSubmit = document.querySelector('.speakers-filter__submit'),
+        $broadcastTopChat = document.querySelector('.broadcast__top-chat'),
+        $broadcastForm = document.querySelector('.broadcast__form'),
+        $contentSidebarMore = document.querySelector('.content__sidebar-more'),
+        $lastBox = document.querySelectorAll('.last__box');
 
     let swiperBrend,
         swiperExpo,
@@ -181,8 +187,8 @@ window.addEventListener('load', function() {
 
     }
 
-    function upPage() {
-        $('html, body').animate({ scrollTop: 0 }, 1000);
+    function upPage(speed = 1000) {
+        $('html, body').animate({ scrollTop: 0 }, speed);
     }
 
 
@@ -228,11 +234,13 @@ window.addEventListener('load', function() {
         $settingsIcon.addEventListener('click', doubleClick.bind(null, document.querySelectorAll('.choise__title')), false);
         $settingsIcon.addEventListener('click', doubleClick.bind(null, document.querySelectorAll('.checkbox__title')), false);
         $settingsIcon.addEventListener('click', blockBody, false);
+        $settingsIcon.addEventListener('click', upPage, false);
     }
     if ($sidebar !== null) $sidebar.addEventListener('click', checkEventTargetSidebar);
     if ($filterClose !== null) {
         $filterClose.addEventListener('click', addModifierOpen.bind(null, [$sidebar, document.querySelector('.sidebar__content')]), false);
         $filterClose.addEventListener('click', blockBody, false);
+
     }
     // if ($filterSubmit !== null) $filterSubmit.addEventListener('click', ajaxRequest.bind(null, $filterSubmit.closest('.form').className, 'test.php'), false);
     if (window.innerWidth > 1220 && $checkboxElementInput !== null) {
@@ -284,6 +292,21 @@ window.addEventListener('load', function() {
     if ($speakersFilterAlphabetLetter !== null) $speakersFilterAlphabetLetter.forEach(function(item) {
         item.addEventListener('click', addModifierActive.bind(null, item, 1), false)
     });
+    if ($broadcastTopChat !== null) {
+        $broadcastTopChat.addEventListener('click', addModifierOpen.bind(null, [$sidebar, document.querySelector('.sidebar__content')]), false);
+        $broadcastTopChat.addEventListener('click', blockBody, false);
+        $broadcastTopChat.addEventListener('click', upPage.bind(null, 100), false);
+    }
+    if ($contentSidebarMore !== null) {
+        if (window.innerWidth >= 500) $contentSidebarMore.addEventListener('click', autoDetectHeight.bind(null, document.querySelector('.content__sidebar-text'), 0, 60), false);
+        else $contentSidebarMore.addEventListener('click', autoDetectHeight.bind(null, document.querySelector('.content__sidebar-text'), 0, 64), false);
+    }
+    if ($lastBox !== null) $lastBox.forEach(function(item) {
+        item.addEventListener('click', addModifierActive.bind(null, item, 1), false);
+        item.addEventListener('click', clickLastBox, false);
+    });
+
+
 
 
 
@@ -326,11 +349,19 @@ window.addEventListener('load', function() {
     });
     if ($speakersFilterSubmit !== null) $speakersFilterSubmit.addEventListener('click', ajaxRequest.bind(null, $speakersFilterSubmit.closest('form').className, 'test.php'), false); //Это все параметры правой плашки при нажатии на применить (в моб. версии)
     // Форма на странице speakers.html (в макете "Спикеры 1922")
+    // Форма отправки комментария (страница Трансляции)
+    if ($broadcastForm !== null) $broadcastForm.addEventListener('submit', ajaxRequest.bind(null, $broadcastForm.className, 'test.php'), false);
+    // /Форма отправки комментария (страница Трансляции)
     // ************** /Формы
 
 
 
 
+
+    function clickLastBox() {
+        $('.content__box').not(this).not($('.content__box')[2]).not($('.content__box')[5]).fadeOut();
+
+    }
 
     function choiseTimeElement() {
         $filterTimeInput.value = this.id;

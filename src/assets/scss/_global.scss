@@ -195,6 +195,9 @@ main {
             line-height: 14px;
         }
     }
+    &__img {
+        border-radius: 50%;
+    }
 }
 
 .bottom-info {
@@ -204,7 +207,8 @@ main {
 }
 
 .like,
-.chat {
+.chat,
+.look {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -719,6 +723,9 @@ main {
     &--open {
         width: 100vw;
         background-color: rgba(0, 0, 0, 0.3);
+        &.broadcast__sidebar {
+            background-color: rgba(0, 0, 0, 0);
+        }
     }
     &__content {
         position: relative;
@@ -729,9 +736,28 @@ main {
         background-color: #fff;
         padding: 0;
         transition: .3s;
+        &.broadcast__sidebar {
+            @media(max-width: 1220px) {
+                width: 100%;
+                min-height: auto;
+                height: 0;
+                overflow: auto;
+            }
+        }
         &--open {
             width: 394px;
             padding: 20px 30px 0 37px;
+            &.broadcast__sidebar {
+                width: 682px;
+                @media(max-width: 1280px) {
+                    width: 529px;
+                }
+                @media(max-width: 1220px) {
+                    height: calc(100vh - 560px);
+                    position: absolute;
+                    bottom: 0;
+                }
+            }
             @media(max-width: 500px) {
                 padding: 20px 20px 0 19px;
             }
