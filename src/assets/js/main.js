@@ -13,6 +13,9 @@ document.onreadystatechange = function() {
         if (document.querySelector('.favorites__settings') !== null && window.innerWidth <= 700) {
             document.querySelector('.favorites__top').insertAdjacentElement('afterend', document.querySelector('.favorites__settings'));
         }
+        if (document.querySelector('main.last') !== null && window.innerWidth <= 1220) {
+            document.querySelector('.content__product').insertAdjacentElement('beforebegin', document.querySelector('.content__sidebar'));
+        }
     }
 }
 window.addEventListener('load', function() {
@@ -50,7 +53,6 @@ window.addEventListener('load', function() {
         $modalClose = document.querySelector('.modal__close'),
         $contentAlphabetElement = document.querySelectorAll('.content__alphabet-element'),
         $contentFilterElementPage = document.querySelectorAll('.content__filter-element--page'),
-        $pageFilter = document.querySelector('.page-filter'),
         $pageFilterElement = document.querySelectorAll('.page-filter__element'),
         $pageFilterSubmit = document.querySelector('.page-filter__submit'),
         $favoritesFilterElement = document.querySelectorAll('.favorites__filter-element'),
@@ -63,12 +65,21 @@ window.addEventListener('load', function() {
         $broadcastTopChat = document.querySelector('.broadcast__top-chat'),
         $broadcastForm = document.querySelector('.broadcast__form'),
         $contentSidebarMore = document.querySelector('.content__sidebar-more'),
-        $lastBox = document.querySelectorAll('.last__box');
+        $lastBox = document.querySelectorAll('.last__box'),
+        $lastBoxClose = document.querySelectorAll('.last__box-close'),
+        $lastBoxMore = document.querySelector('.last__box-more'),
+        $exhibitorInput = document.querySelectorAll('.exhibitor__input'),
+        $exhibitorBtn = document.querySelector('.exhibitor__btn'),
+        $programInput = document.querySelectorAll('.program__input'),
+        $programBtn = document.querySelector('.program__btn'),
+        $contentProgramFormInput = document.querySelectorAll('.content__program-form-input'),
+        $contentProgramFormDay = document.querySelectorAll('.content__program-form-day');
 
     let swiperBrend,
         swiperExpo,
         swiperExhebitorEvent,
-        swiperPageSpeaker;
+        swiperPageSpeaker,
+        swiperLast;
 
     if ($swiperContainer !== null) {
         if (document.querySelector('main.main') !== null) {
@@ -105,6 +116,14 @@ window.addEventListener('load', function() {
                 slidesOffsetBefore: 15,
             });
             if (window.innerWidth <= 500) swiperPageSpeaker.destroy(true, true);
+        }
+        if (document.querySelector('main.last') !== null) {
+            swiperLast = new Swiper('.swiper-container', {
+                spaceBetween: 20,
+                slidesPerView: 'auto',
+                slidesOffsetBefore: 15,
+            });
+            if (window.innerWidth <= 500) swiperLast.destroy(true, true);
         }
     }
 
@@ -280,7 +299,7 @@ window.addEventListener('load', function() {
     if ($filterTimeElement !== null) $filterTimeElement.forEach(function(item) {
         item.addEventListener('click', renameContentText.bind(null, document.querySelector('.filter-time__span'), item.textContent, undefined), false);
         item.addEventListener('click', choiseTimeElement);
-        if (window.innerWidth > 500) item.addEventListener('click', ajaxRequest.bind(null, item.closest('.form').className, 'test.php'), false);
+        // if (window.innerWidth > 500) item.addEventListener('click', ajaxRequest.bind(null, item.closest('.form').className, 'test.php'), false);
         item.addEventListener('click', addModifierActive.bind(null, item, 1), false)
     });
     if ($infoMore !== null) {
@@ -300,11 +319,19 @@ window.addEventListener('load', function() {
     if ($contentSidebarMore !== null) {
         if (window.innerWidth >= 500) $contentSidebarMore.addEventListener('click', autoDetectHeight.bind(null, document.querySelector('.content__sidebar-text'), 0, 60), false);
         else $contentSidebarMore.addEventListener('click', autoDetectHeight.bind(null, document.querySelector('.content__sidebar-text'), 0, 64), false);
+        $contentSidebarMore.addEventListener('click', renameContentText.bind(null, $contentSidebarMore, 'Скрыть', 'Показать полностью'), false);
     }
+    if ($lastBoxMore !== null) $lastBoxMore.addEventListener('click', autoDetectHeight.bind(null, $lastBoxMore.parentNode.querySelector('.last__box-text'), 0, 51), false);
     if ($lastBox !== null) $lastBox.forEach(function(item) {
-        item.addEventListener('click', addModifierActive.bind(null, item, 1), false);
         item.addEventListener('click', clickLastBox, false);
     });
+    if ($lastBoxClose !== null) $lastBoxClose.forEach(function(item) {
+        item.addEventListener('click', clickCloseLastBox);
+    });
+    if ($contentProgramFormDay !== null) $contentProgramFormDay.forEach(function(item) {
+        item.addEventListener('click', addModifierActive.bind(null, item, 1), false);
+    });
+
 
 
 
@@ -352,6 +379,26 @@ window.addEventListener('load', function() {
     // Форма отправки комментария (страница Трансляции)
     if ($broadcastForm !== null) $broadcastForm.addEventListener('submit', ajaxRequest.bind(null, $broadcastForm.className, 'test.php'), false);
     // /Форма отправки комментария (страница Трансляции)
+    // Форма отправки Программа экспонентов (exhibitor.html)
+    if ($exhibitorInput !== null) $exhibitorInput.forEach(function(item) {
+        if (window.innerWidth > 1220) item.addEventListener('input', ajaxRequest.bind(null, item.closest('form').className, 'test.php'), false); //Это все параметры правой плашки кроме времени
+    });
+    if ($filterTimeElement !== null) $filterTimeElement.forEach(function(item) {
+        if (window.innerWidth > 1220) item.addEventListener('click', ajaxRequest.bind(null, item.closest('.form').className, 'test.php'), false); //Это время
+    });
+    if ($exhibitorBtn !== null) $exhibitorBtn.addEventListener('click', ajaxRequest.bind(null, $exhibitorBtn.closest('.form').className, 'test.php'), null); //На мобайле кнопка применить
+    // /Форма отправки Программа экспонентов (exhibitor.html)
+    // Форма отправки Программа мероприятий (program.html)
+    if ($programInput !== null) $programInput.forEach(function(item) {
+        if (window.innerWidth > 1220) item.addEventListener('input', ajaxRequest.bind(null, item.closest('form').className, 'test.php'), false); //Это все параметры правой плашки
+    });
+    if ($programBtn !== null) $programBtn.addEventListener('click', ajaxRequest.bind(null, $programBtn.closest('.form').className, 'test.php'), null); //На мобайле кнопка применить
+    // /Форма отправки Программа мероприятий (program.html)
+    // Выбор даты Программы мероприятий (last.html)
+    if ($contentProgramFormInput !== null) $contentProgramFormInput.forEach(function(item) {
+        item.addEventListener('input', ajaxRequest.bind(null, item.closest('form').className, 'test.php'), false);
+    });
+    // /Выбор даты Программы мероприятий (last.html)
     // ************** /Формы
 
 
@@ -359,8 +406,68 @@ window.addEventListener('load', function() {
 
 
     function clickLastBox() {
-        $('.content__box').not(this).not($('.content__box')[2]).not($('.content__box')[5]).fadeOut();
+        if (window.innerWidth > 500) {
+            let _this = this,
+                elementOne,
+                elementTwo;
+            if (_this !== $('.content__box')[2]) elementOne = $('.content__box')[2];
+            else elementOne = $('.content__box')[3];
+            if (_this !== $('.content__box')[5]) elementTwo = $('.content__box')[5];
+            else elementTwo = $('.content__box')[4];
+            $('.content__box').fadeOut(400);
 
+            setTimeout(function() {
+                addModifierActive(_this, 1);
+                if (document.querySelector('.last__block-inner').querySelector('.last__box') !== null) {
+                    document.querySelector('.last__block-inner').querySelector('.last__box').addEventListener('click', clickLastBox);
+                    document.querySelector('.last__block-inner').insertAdjacentElement('afterend', document.querySelector('.last__block-inner').querySelector('.last__box'));
+                }
+                document.querySelector('.last__block-inner').insertAdjacentElement('afterbegin', _this);
+                document.querySelector('.last__block-wrapper').insertAdjacentElement('beforeend', elementOne);
+                document.querySelector('.last__block-wrapper').insertAdjacentElement('beforeend', elementTwo);
+
+                $(_this).fadeIn(400);
+                $(elementOne).fadeIn(400);
+                $(elementTwo).fadeIn(400);
+                _this.removeEventListener('click', clickLastBox);
+            }, 400);
+        } else {
+            $(this).children('.last__box-close').fadeIn(400);
+            // addModifierActive(this, 1);
+            $(this).children('.last__box-inner').toggle(400);
+            this.removeEventListener('click', clickLastBox);
+        }
+
+    }
+
+    function clickCloseLastBox() {
+        if (window.innerWidth > 500) {
+            $('.content__box').fadeOut(400);
+            setTimeout(function() {
+                addModifierActive(document.querySelector('.last__block-inner').querySelector('.last__box'));
+                document.querySelector('.last__block-inner').querySelector('.last__box').addEventListener('click', clickLastBox);
+                document.querySelector('.last__block-inner').insertAdjacentElement('afterend', document.querySelector('.last__block-inner').querySelector('.last__box'));
+                document.querySelector('.last__block-wrapper').querySelectorAll('.last__box').forEach(function(item) {
+                    document.querySelector('.last__block-inner').insertAdjacentElement('afterend', item);
+                });
+                $('.content__box').fadeIn(400);
+            }, 400);
+        } else {
+            let _this = this;
+            $(this).parent().children('.last__box-inner').toggle(400);
+            $(this).fadeOut(400);
+            // addModifierActive(this, 1);
+            // addModifierActive(this.parentNode);
+            setTimeout(function() {
+                _this.closest('.last__box').addEventListener('click', clickLastBox);
+            }, 200)
+
+        }
+    }
+
+    function clickLastBoxPlus() {
+        clickCloseLastBox();
+        clickLastBox();
     }
 
     function choiseTimeElement() {
