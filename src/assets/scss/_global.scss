@@ -1,10 +1,10 @@
 body {
-    &.block {
-        overflow: hidden;
-    }
     font-family: $default-font;
     font-display: swap;
     color: $mainColor;
+    &.block {
+        overflow: hidden;
+    }
     a {
         color: $mainColor;
     }
@@ -47,14 +47,15 @@ main {
     &__element {
         margin-top: 18px;
         font-size: 12px;
-        font-weight: 300;
+        font-weight: 400;
         color: $mainColor;
-        opacity: 0.4;
+        opacity: .8;
         margin-right: 6px;
         flex: 0 0 auto;
         @media(max-width: 500px) {
             font-size: 10px;
-            margin-top: 8px;
+            margin-top: 15px;
+            padding-bottom: 15px;
         }
         &--current {
             color: $siteColor;
@@ -124,6 +125,10 @@ main {
         .avatar__name {
             line-height: 40px;
         }
+        .avatar__img {
+            width: 40px;
+            height: 40px;
+        }
     }
     &--purpure {
         background-color: #d6c2ff;
@@ -163,13 +168,15 @@ main {
         background: #FFFFFF;
         z-index: 99;
         left: 0;
-        transition: .6s;
+        transition: opacity .6s;
         height: 0;
         overflow: hidden;
+        opacity: 0;
         &--open {
             height: auto;
             padding: 10px 25px 20px;
             box-shadow: 0 0px 9px 2px rgba(0, 0, 0, 0.05);
+            opacity: 1;
             @media(max-width: 500px) {
                 padding: 15px;
             }
@@ -187,6 +194,7 @@ main {
             font-weight: 600;
             font-size: 14px;
             margin: 10px 0 10px;
+            padding-right: 20px;
         }
         &-text {
             margin-top: 6px;
@@ -197,6 +205,9 @@ main {
     }
     &__img {
         border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        object-fit: cover;
     }
 }
 
@@ -355,6 +366,23 @@ main {
     position: relative;
     @media(max-width: 1220px) {
         margin-left: 0;
+    }
+    &__number {
+        margin-left: 30px;
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+        width: 20px;
+        background-color: $siteColor;
+        text-align: center;
+        color: #fff;
+        border-radius: 50%;
+        font-size: 14px;
+        opacity: 0;
+        transition: .3s;
+        &--visible {
+            opacity: 1;
+        }
     }
     &__close {
         position: absolute;
@@ -973,9 +1001,20 @@ main {
                 font-size: 12px;
             }
         }
-        &-text {
+        &-place {
             font-size: 12px;
             font-weight: 300;
+            line-height: 15.6px;
+            max-width: 370px;
+            margin-bottom: 5px;
+            @media(max-width: 500px) {
+                font-size: 10px;
+                line-height: 13px;
+            }
+        }
+        &-text {
+            font-size: 12px;
+            font-weight: 500;
             line-height: 15.6px;
             max-width: 370px;
             @media(max-width: 500px) {

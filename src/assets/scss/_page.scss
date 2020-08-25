@@ -1,3 +1,11 @@
+.page {
+    .expo-box__tag {
+        flex-grow: 1;
+        display: flex;
+        align-items: flex-end;
+    }
+}
+
 .page,
 .list-broadcast {
     .content__filter {
@@ -19,6 +27,8 @@
             flex: 0 1 100%;
         }
         &__inner {
+            display: flex;
+            flex-direction: column;
             @media(max-width: 500px) {
                 padding: 0 15px;
             }

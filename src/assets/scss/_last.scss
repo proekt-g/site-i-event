@@ -87,6 +87,21 @@
             cursor: pointer;
             display: none;
         }
+        &-photo {
+            max-width: 100%;
+            width: 100%;
+            height: 176px;
+            @media(max-width: 1280px) {
+                height: 213px;
+            }
+            @media(max-width: 500px) {
+                height: 166px;
+            }
+        }
+        &-img {
+            height: 100%;
+            object-fit: cover
+        }
     }
     .content {
         &__main {
@@ -114,6 +129,7 @@
                 font-size: 16px;
                 font-weight: 700;
                 cursor: pointer;
+                transition: .3s;
                 @media(max-width: 500px) {
                     font-size: 12px;
                 }
@@ -143,6 +159,10 @@
             justify-content: start;
             margin: -10px -9px;
             min-height: 590px;
+            &--hidden {
+                position: absolute;
+                opacity: 0;
+            }
         }
         &__box {
             margin: 10px 9px;
@@ -170,6 +190,12 @@
                 }
                 .last__box-btn {
                     display: inline-block;
+                }
+                .last__box-photo {
+                    height: 364px;
+                    @media(max-width: 500px) {
+                        height: 166px;
+                    }
                 }
             }
             &:hover {
@@ -310,6 +336,10 @@
         }
         &__program {
             margin-top: 25px;
+            &--hidden {
+                position: absolute;
+                opacity: 0;
+            }
             &-form {
                 &-date {
                     display: flex;

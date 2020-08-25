@@ -1191,14 +1191,17 @@
                                 <rect x="14.6067" y="1.93335" width="18.479" height="1.31993" rx="0.659965" transform="rotate(135 14.6067 1.93335)" fill="#337DF6" stroke="#337DF6" stroke-width="0.6"/>
                             </svg>
                         </div>
-                        <div class="submain-title"><span class="submain-title__text">Фильтры</span></div>
+                        <div class="submain-title">
+                            <span class="submain-title__text">Фильтры</span>
+                            <span class="filter__number">1</span>
+                        </div>
                         <form class="form" action="" method="post" id="business-filter">
                             <div class="choise filter__choise choise--open">
                                 <div class="choise__title">Тематика мероприятия</div>
                                 <div class="choise__inner">
                                     <div class="choise__element">
-                                        <input class="choise__element-input favorites__filter-element" id="r1" type="radio" name="radio" value="1">
-                                        <label class="choise__element-label" for="r1">Все тематики</label>
+                                        <input class="choise__element-input favorites__filter-element" id="r1" type="radio" name="radio" value="1" checked>
+                                        <label class="choise__element-label choise__element-label--all" for="r1">Все тематики</label>
                                     </div>
                                     <div class="choise__element">
                                         <input class="choise__element-input favorites__filter-element" id="r2" type="radio" name="radio" value="2">
@@ -1262,24 +1265,34 @@
                             <div class="date filter__date">
                                 <div class="date__title">Даты</div>
                                 <div class="date__inner">
-                                    <input class="date__input favorites__filter-element" id="i1" type="radio" name="radio2" value="1" checked>
-                                    <label class="date__element date__element--active" for="i1">Все</label>
-                                    <input class="date__input favorites__filter-element" id="i2" type="radio" name="radio2" value="1">
-                                    <label class="date__element" for="i2">20.05</label>
-                                    <input class="date__input favorites__filter-element" id="i3" type="radio" name="radio2" value="1">
-                                    <label class="date__element" for="i3">21.05</label>
-                                    <input class="date__input favorites__filter-element" id="i4" type="radio" name="radio2" value="1">
-                                    <label class="date__element" for="i4">22.05</label>
-                                    <input class="date__input favorites__filter-element" id="i5" type="radio" name="radio2" value="1">
-                                    <label class="date__element" for="i5">23.05</label>
+                                    <div class="date__def">
+                                        <input class="date__input favorites__filter-element" id="i1" type="radio" name="radio2" value="1" checked>
+                                        <label class="date__element date__element--active date__element--all" for="i1">Все</label>
+                                    </div>
+                                    <div class="date__def">
+                                        <input class="date__input favorites__filter-element" id="i2" type="radio" name="radio2" value="1">
+                                        <label class="date__element" for="i2">20.05</label>
+                                    </div>
+                                    <div class="date__def">
+                                        <input class="date__input favorites__filter-element" id="i3" type="radio" name="radio2" value="1">
+                                        <label class="date__element" for="i3">21.05</label>
+                                    </div>
+                                    <div class="date__def">
+                                        <input class="date__input favorites__filter-element" id="i4" type="radio" name="radio2" value="1">
+                                        <label class="date__element" for="i4">22.05</label>
+                                    </div>
+                                    <div class="date__def">
+                                        <input class="date__input favorites__filter-element" id="i5" type="radio" name="radio2" value="1">
+                                        <label class="date__element" for="i5">23.05</label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="checkbox filter__checkbox checkbox--open">
                                 <div class="checkbox__title">Формат мероприятия</div>
                                 <div class="checkbox__inner">
                                     <div class="checkbox__element">
-                                        <input class="checkbox__element-input favorites__filter-element" id="c1" type="checkbox" name="checkbox1">
-                                        <label class="checkbox__element-label" for="c1">Все форматы</label>
+                                        <input class="checkbox__element-input favorites__filter-element" id="c1" type="checkbox" name="checkbox1" checked>
+                                        <label class="checkbox__element-label checkbox__element-label--all" for="c1">Все форматы</label>
                                     </div>
                                     <div class="checkbox__element">
                                         <input class="checkbox__element-input favorites__filter-element" id="c2" type="checkbox" name="checkbox2">
@@ -1339,8 +1352,8 @@
                                 <div class="checkbox__title">Целевая аудитория</div>
                                 <div class="checkbox__inner">
                                     <div class="checkbox__element">
-                                        <input class="checkbox__element-input favorites__filter-element" id="c20" type="checkbox" name="checkbox15">
-                                        <label class="checkbox__element-label" for="c20">Все форматы</label>
+                                        <input class="checkbox__element-input favorites__filter-element" id="c20" type="checkbox" name="checkbox15" checked>
+                                        <label class="checkbox__element-label checkbox__element-label--all" for="c20">Все форматы</label>
                                     </div>
                                     <div class="checkbox__element">
                                         <input class="checkbox__element-input favorites__filter-element" id="c21" type="checkbox" name="checkbox16">
@@ -1409,7 +1422,7 @@
                                     </div>
                                     <div class="tags__element">
                                         <input class="tags__element-input favorites__filter-element" id="ch3" type="checkbox" name="check3">
-                                        <label class="tags__element-label tags__element-label--active" for="ch3">#дистант</label>
+                                        <label class="tags__element-label" for="ch3">#дистант</label>
                                     </div>
                                     <div class="tags__element">
                                         <input class="tags__element-input favorites__filter-element" id="ch4" type="checkbox" name="check4">
@@ -1429,7 +1442,7 @@
                                     </div>
                                     <div class="tags__element">
                                         <input class="tags__element-input favorites__filter-element" id="ch8" type="checkbox" name="check8">
-                                        <label class="tags__element-label tags__element-label--active" for="ch8">#управлениепроектами</label>
+                                        <label class="tags__element-label" for="ch8">#управлениепроектами</label>
                                     </div>
                                     <div class="tags__element">
                                         <input class="tags__element-input favorites__filter-element" id="ch9" type="checkbox" name="check9">
@@ -1441,7 +1454,7 @@
                                     </div>
                                     <div class="tags__element">
                                         <input class="tags__element-input favorites__filter-element" id="ch11" type="checkbox" name="check11">
-                                        <label class="tags__element-label tags__element-label--active" for="ch11">#образовательнаясреда</label>
+                                        <label class="tags__element-label" for="ch11">#образовательнаясреда</label>
                                     </div>
                                     <div class="tags__element">
                                         <input class="tags__element-input favorites__filter-element" id="ch12" type="checkbox" name="check12">

@@ -13,7 +13,7 @@
             display: flex;
             justify-content: space-between;
             @media(max-width: 500px) {
-                margin-top: 28px;
+                margin-top: 0;
             }
             .filter {
                 @media(max-width: 1220px) {
@@ -236,7 +236,8 @@
             height: 0;
             overflow: hidden;
             padding: 0;
-            transition: .6s;
+            transition: opacity .6s;
+            opacity: 0;
             @media(max-width: 500px) {
                 position: relative;
                 height: 26px;
@@ -245,7 +246,12 @@
             }
             &--open {
                 height: 200px;
-                padding: 20px 25px;
+                padding: 21.5px 25px;
+                opacity: 1;
+            }
+            &-inner {
+                max-height: 100%;
+                overflow: hidden;
             }
         }
         &__btn-more {

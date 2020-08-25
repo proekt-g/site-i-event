@@ -124,10 +124,34 @@
             font-size: 12px;
             font-weight: 400;
             height: 47px;
-            overflow: hidden;
+            // overflow: hidden;
             line-height: 15.6px;
+            cursor: pointer;
+            position: relative;
             @media(max-width: 500px) {
                 height: 40px;
+                line-height: 13px;
+                font-size: 10px;
+            }
+            &:hover::after {
+                content: attr(data-tooltip);
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                z-index: 1;
+                background: #ffffff;
+                font-size: 12px;
+                line-height: 15px;
+                padding: 5px 10px;
+                border: 1px solid #11937c;
+                border-radius: 10px;
+            }
+        }
+        &-place {
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 15.6px;
+            @media(max-width: 500px) {
                 line-height: 13px;
                 font-size: 10px;
             }

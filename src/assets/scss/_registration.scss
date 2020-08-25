@@ -8,6 +8,12 @@
     @media(max-width: 500px) {
         background-image: none;
     }
+    &__error {
+        color: red;
+        text-align: left;
+        transition: .3s;
+        font-weight: 500;
+    }
     .container {
         padding: 0;
         height: 100%;
