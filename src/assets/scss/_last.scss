@@ -8,7 +8,15 @@
     }
     &__block-inner {
         display: flex;
-        flex: 0 1 100%;
+        flex: 0 1 1054px;
+        @media(max-width: 1650px) {
+            .content__box {
+                flex: 0 0 338px!important;
+                &--active {
+                    flex: 0 0 498px!important;
+                }
+            }
+        }
         @media(max-width: 1550px) {
             flex-direction: column;
         }
@@ -109,6 +117,16 @@
                 display: flex;
             }
         }
+        &__program-boxes {
+            cursor: grab;
+        }
+        &__slider-block {
+            &--hidden {
+                position: absolute;
+                opacity: 0;
+                display: none;
+            }
+        }
         &__main {
             @media(max-width: 1650px) {
                 max-width: 850px
@@ -175,8 +193,20 @@
             // display: flex;
             // flex-wrap: wrap;
             // justify-content: start;
-            @media(max-width: 1550px) {
-                height: 1084px;
+            // @media(max-width: 1550px) {
+            //     height: 1084px;
+            // }
+            &--active {
+                @media(min-width: 1650px) {
+                    height: auto!important;
+                }
+                // @media(max-width: 500px) {
+                //     height: auto!important;
+                // }
+                .last__block-inner {
+                    margin: -10px -10px;
+                    min-width: 100%;
+                }
             }
             &--hidden {
                 position: absolute;
@@ -205,13 +235,13 @@
                 flex: 0 1 47%;
             }
             @media(max-width: 1550px) {
-                flex: 0 1 323px;
+                flex: 0 1 323px!important;
             }
             @media(max-width: 1220px) {
-                flex: 0 1 47%;
+                flex: 0 1 47%!important;
             }
             @media(max-width: 700px) {
-                flex: 0 1 100%;
+                flex: 0 1 100%!important;
             }
             // &:first-child {
             //     @media(max-width: 500px) {
@@ -376,6 +406,7 @@
         }
         &__program {
             margin-top: 25px;
+            max-width: 1053px;
             &--hidden {
                 position: absolute;
                 opacity: 0;

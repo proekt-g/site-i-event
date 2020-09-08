@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/style.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <aside class="button-up">
+        <div class="button-up__img">
+            <svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 8L7.5 2L1 8" stroke="#337DF6" stroke-width="2"/>
+            </svg>
+        </div>
+    </aside>
+    <header class="header" id="header">
+        <div class="layer">
+            <div class="container">
+                <div class="header__inner">
+                    <a class="header__logo" href="#">
+                        <picture>
+                            <source media="(max-width: 500px)" srcset="assets/images/logo-mobail.jpg">
+                            <source media="(max-width: 768px)" srcset="assets/images/logo-tablet.jpg">
+                            <img class="header__logo-img" src="assets/images/logo.jpg" alt="logo">
+                        </picture>
+                    </a>
+                    <nav class="header__menu">
+                        <a class="header__menu-element " href="#">Программа</a>
+                        <a class="header__menu-element" href="#">Спикеры</a>
+                        <a class="header__menu-element" href="#">Трансляции</a>
+                        <a class="header__menu-element header__menu-element--active" href="#">Экспоненты</a>
+                        <a class="header__menu-element" href="#">Новости</a>
+                    </nav>
+                    <div class="header__icon">
+                        <a class="header__star" href="#">
+                            <div class="header__star-img">
+                                <svg class="img-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19">
+                                    <defs>
+                                        <clipPath id="kq7ma">
+                                            <path fill="#fff" d="M19.948 7.179a1.06 1.06 0 0 0-.914-.724l-5.774-.52L10.978.64A1.063 1.063 0 0 0 10 0c-.427 0-.81.251-.977.64L6.74 5.936l-5.774.52a1.063 1.063 0 0 0-.915.723 1.05 1.05 0 0 0 .31 1.12l4.365 3.794L3.44 17.71c-.094.413.067.84.413 1.088a1.065 1.065 0 0 0 1.169.052L10 15.9l4.978 2.95a1.07 1.07 0 0 0 1.169-.05 1.05 1.05 0 0 0 .413-1.089l-1.287-5.618 4.365-3.794a1.05 1.05 0 0 0 .31-1.12z"/></clipPath></defs><g><g><path fill="none" stroke="#969696" stroke-miterlimit="20" stroke-width="2" d="M19.948 7.179a1.06 1.06 0 0 0-.914-.724l-5.774-.52v0L10.978.64A1.063 1.063 0 0 0 10 0c-.427 0-.81.251-.977.64L6.74 5.936v0l-5.774.52a1.063 1.063 0 0 0-.915.723 1.05 1.05 0 0 0 .31 1.12l4.365 3.794v0L3.44 17.71c-.094.413.067.84.413 1.088a1.065 1.065 0 0 0 1.169.052L10 15.9v0l4.978 2.95a1.07 1.07 0 0 0 1.169-.05 1.05 1.05 0 0 0 .413-1.089l-1.287-5.618v0l4.365-3.794a1.05 1.05 0 0 0 .31-1.12z" clip-path="url(&quot;#kq7ma&quot;)"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </a>
+                        <a class="header__message" href="#">
+                            <div class="header__star-img">
+                                <svg class="img-svg" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                    <defs>
+                                        <clipPath id="hcpxa">
+                                            <path fill="#fff" d="M2.63 17.005H1.292l.946-.96c.51-.518.83-1.191.915-1.922C.968 12.668-.12 10.56-.12 8.35-.12 4.273 3.573.13 9.356.13c6.127 0 9.413 3.812 9.413 7.863 0 4.077-3.32 7.887-9.413 7.887-1.067 0-2.18-.145-3.175-.41a4.925 4.925 0 0 1-3.55 1.535z"/>
+                                        </clipPath></defs><g><g>
+                                                <path fill="none" stroke="#969696" stroke-miterlimit="20" stroke-width="2" d="M2.63 17.005v0H1.292v0l.946-.96c.51-.518.83-1.191.915-1.922C.968 12.668-.12 10.56-.12 8.35-.12 4.273 3.573.13 9.356.13c6.127 0 9.413 3.812 9.413 7.863 0 4.077-3.32 7.887-9.413 7.887-1.067 0-2.18-.145-3.175-.41a4.925 4.925 0 0 1-3.55 1.535z" clip-path="url(&quot;#hcpxa&quot;)"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="header__new-message"></div>
+                        </a>
+                    </div>
+                    <a class="header__avatar" href="#">
+                        <picture>
+                            <source media="(max-width: 500px)" srcset="assets/images/me-avatar-little.jpg">
+                            <img class="header__img" src="assets/images/me-avatar.jpg" alt="">
+                        </picture>
+                    </a>
+                    <!-- <a class="header__btn" href="#">Регистрация</a> -->
+                </div>
+            </div>
+        </div>
+        <nav class="header__menu header__menu--mobail">
+            <a class="header__menu-element header__menu-element--active" href="#">Программа</a>
+            <a class="header__menu-element" href="#">Спикеры</a>
+            <a class="header__menu-element" href="#">Трансляции</a>
+            <a class="header__menu-element" href="#">Экспоненты</a>
+            <a class="header__menu-element" href="#">Новости</a>
+        </nav>
+    </header>
+    <main class="exhibitor-event">
+        <section class="crumbs">
+            <div class="container">
+                <div class="crumbs__inner">
+                    <a class="crumbs__element" href="#">Главаня -</a>
+                    <a class="crumbs__element" href="#">Экспоненты -</a>
+                    <a class="crumbs__element" href="#">Программа экспонентов -</a>
+                    <a class="crumbs__element crumbs__element--current" href="#">Мероприятия экспонента</a>
+                </div>
+            </div>
+        </section>
+        <section class="info">
+            <div class="container">
+                <div class="info__inner">
+                    <div class="info__video">
+                        <iframe src="https://www.youtube.com/embed/nJtAxj9A_sk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="info__text">
+                        <div class="info__text-date">
+                            <div class="info__text-time">18:30</div>
+                            <div class="info__text-day">30.05.2020</div>
+                        </div>
+                        <div class="main-title">Автономное учреждение дополнительно профессионального образования Ханты-Мансийского автономного округа - Югры "Институт развития образования" </div>
+                        <div class="info__text-location">Expo-centre 620060, Россия, г. Екатеринбург ЭКСПО-бульвар, дом 2</div>
+                        <div class="info__text-p">
+                            <p>
+                                Гости выставки познакомятся с новинками охотничьего и спортивного оружия. Оснащением и аксессуарами для рыбалки. Современной экипировкой и техникой. Гости выставки познакомятся с новинками охотничьего и спортивного оружия. Оснащением и аксессуарами для
+                                рыбалки. Современной экипировкой и техникой. Гости выставки познакомятся с новинками охотничьего и спортивного оружия. Оснащением и аксессуарами для рыбалки. Современной экипировкой и техникой. Гости выставки познакомятся
+                                с новинками охотничьего и спортивного оружия. Оснащением и аксессуарами для рыбалки. Современной экипировкой и техникой.
+                            </p>
+                        </div>
+                        <div class="info__text-more">Показать полностью</div>
+                        <div class="submain-title">Спикеры</div>
+                        <div class="info__text-p">
+                            <p>
+                                Гости выставки познакомятся с новинками охотничьего и спортивного оружия. Оснащением и аксессуарами для рыбалки. Современной экипировкой и техникой. Гости выставки познакомятся с новинками охотничьего и спортивного оружия. Оснащением и аксессуарами для
+                                рыбалки. Современной экипировкой и техникой. Гости выставки познакомятся с новинками охотничьего и спортивного оружия. Оснащением и аксессуарами для рыбалки. Современной экипировкой и техникой. Гости выставки познакомятся
+                                с новинками охотничьего и спортивного оружия. Оснащением и аксессуарами для рыбалки. Современной экипировкой и техникой.
+                            </p>
+                        </div>
+                        <div class="info__text-more">Показать полностью</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="slider">
+            <div class="slider__top">
+                <div class="container">
+                    <div class="main-title">Следующие мероприятия</div>
+                </div>
+            </div>
+            <div class="slider__block swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="content__box swiper-slide">
+                        <div class="content__box-inner">
+                            <div class="content__box-top">
+                                <div class="content__time">18:30</div>
+                                <div class="content__day">20.05.2020</div>
+                            </div>
+                            <a class="submain-title" href="#"><span class="submain-title__text">Час региона. Вологодская область. "Трансформация системы образования Вологодской области в условиях пандемии. Эффективные управленческие решения"</span></a>
+                            <div class="content__box-subtitle">Описание описание длинное описание описание длинное описаниеописание длинное описание </div>
+                            <div class="content__box-p">Автономное учреждение дополнительно профессионального образования</div>
+                        </div>
+                    </div>
+                    <div class="content__box swiper-slide">
+                        <div class="content__box-inner">
+                            <div class="content__box-top">
+                                <div class="content__time">18:30</div>
+                                <div class="content__day">20.05.2020</div>
+                            </div>
+                            <a class="submain-title" href="#"><span class="submain-title__text">Час региона. Вологодская область. "Трансформация системы образования Вологодской области в условиях пандемии. Эффективные управленческие решения"</span></a>
+                            <div class="content__box-subtitle">Описание описание длинное описание описание длинное описаниеописание длинное описание Описание описание длинное описание описание длинное описаниеописание длинное описание Описание описание длинное описание описание длинное
+                                описаниеописание длинное описание Описание описание длинное описание описание длинное описаниеописание длинное описание</div>
+                            <div class="content__box-p">Автономное учреждение дополнительно профессионального образования Ханты-Мансийского автономного округа - Югры "Институт развития образования" </div>
+                        </div>
+                    </div>
+                    <div class="content__box swiper-slide">
+                        <div class="content__box-inner">
+                            <div class="content__box-top">
+                                <div class="content__time">18:30</div>
+                                <div class="content__day">20.05.2020</div>
+                            </div>
+                            <a class="submain-title" href="#"><span class="submain-title__text">Час региона. Вологодская область.</span></a>
+                            <div class="content__box-subtitle">Описание описание длинное описание описание длинное описаниеописание длинное описание</div>
+                            <div class="content__box-p">Автономное учреждение дополнительно профессионального образования Ханты-Мансийского автономного округа - Югры "Институт развития образования" </div>
+                        </div>
+                    </div>
+                    <div class="content__box swiper-slide">
+                        <div class="content__box-inner">
+                            <div class="content__box-top">
+                                <div class="content__time">18:30</div>
+                                <div class="content__day">20.05.2020</div>
+                            </div>
+                            <a class="submain-title" href="#"><span class="submain-title__text">Час региона. Вологодская область.</span></a>
+                            <div class="content__box-subtitle">Описание описание длинное описание описание длинное описаниеописание длинное описание</div>
+                            <div class="content__box-p">Автономное учреждение дополнительно профессионального образования Ханты-Мансийского автономного округа - Югры "Институт развития образования" </div>
+                        </div>
+                    </div>
+                    <div class="content__box swiper-slide">
+                        <div class="content__box-inner">
+                            <div class="content__box-top">
+                                <div class="content__time">18:30</div>
+                                <div class="content__day">20.05.2020</div>
+                            </div>
+                            <a class="submain-title" href="#"><span class="submain-title__text">Час региона. Вологодская область.</span></a>
+                            <div class="content__box-subtitle">Описание описание длинное описание описание длинное описаниеописание длинное описание</div>
+                            <div class="content__box-p">Автономное учреждение дополнительно профессионального образования Ханты-Мансийского автономного округа - Югры "Институт развития образования" </div>
+                        </div>
+                    </div>
+                    <div class="content__box swiper-slide">
+                        <div class="content__box-inner">
+                            <div class="content__box-top">
+                                <div class="content__time">18:30</div>
+                                <div class="content__day">20.05.2020</div>
+                            </div>
+                            <a class="submain-title" href="#"><span class="submain-title__text">Час региона. Вологодская область.</span></a>
+                            <div class="content__box-subtitle">Описание описание длинное описание описание длинное описаниеописание длинное описание</div>
+                            <div class="content__box-p">Автономное учреждение дополнительно профессионального образования Ханты-Мансийского автономного округа - Югры "Институт развития образования" </div>
+                        </div>
+                    </div>
+                    <div class="content__box swiper-slide">
+                        <div class="content__box-inner">
+                            <div class="content__box-top">
+                                <div class="content__time">18:30</div>
+                                <div class="content__day">20.05.2020</div>
+                            </div>
+                            <a class="submain-title" href="#"><span class="submain-title__text">Час региона. Вологодская область.</span></a>
+                            <div class="content__box-subtitle">Описание описание длинное описание описание длинное описаниеописание длинное описание</div>
+                            <div class="content__box-p">Автономное учреждение дополнительно профессионального образования Ханты-Мансийского автономного округа - Югры "Институт развития образования" </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__cop">2020 Copyright © </div>
+                <a class="footer__agreement" href="#">Пользовательское соглашение и правила пользования сайтом</a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/js/main.min.js"></script>
+</body>
+
+</html>

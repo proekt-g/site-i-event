@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/style.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <aside class="button-up">
+        <div class="button-up__img">
+            <svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 8L7.5 2L1 8" stroke="#337DF6" stroke-width="2"/>
+            </svg>
+        </div>
+    </aside>
+    <header class="header" id="header">
+        <div class="layer">
+            <div class="container">
+                <div class="header__inner">
+                    <a class="header__logo" href="#">
+                        <picture>
+                            <source media="(max-width: 500px)" srcset="assets/images/logo-mobail.jpg">
+                            <source media="(max-width: 768px)" srcset="assets/images/logo-tablet.jpg">
+                            <img class="header__logo-img" src="assets/images/logo.jpg" alt="logo">
+                        </picture>
+                    </a>
+                    <nav class="header__menu">
+                        <a class="header__menu-element " href="#">Программа</a>
+                        <a class="header__menu-element" href="#">Спикеры</a>
+                        <a class="header__menu-element header__menu-element--active" href="#">Трансляции</a>
+                        <a class="header__menu-element" href="#">Экспоненты</a>
+                        <a class="header__menu-element" href="#">Новости</a>
+                    </nav>
+                    <div class="header__icon">
+                        <a class="header__star" href="#">
+                            <div class="header__star-img">
+                                <svg class="img-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19">
+                                    <defs>
+                                        <clipPath id="kq7ma">
+                                            <path fill="#fff" d="M19.948 7.179a1.06 1.06 0 0 0-.914-.724l-5.774-.52L10.978.64A1.063 1.063 0 0 0 10 0c-.427 0-.81.251-.977.64L6.74 5.936l-5.774.52a1.063 1.063 0 0 0-.915.723 1.05 1.05 0 0 0 .31 1.12l4.365 3.794L3.44 17.71c-.094.413.067.84.413 1.088a1.065 1.065 0 0 0 1.169.052L10 15.9l4.978 2.95a1.07 1.07 0 0 0 1.169-.05 1.05 1.05 0 0 0 .413-1.089l-1.287-5.618 4.365-3.794a1.05 1.05 0 0 0 .31-1.12z"/></clipPath></defs><g><g><path fill="none" stroke="#969696" stroke-miterlimit="20" stroke-width="2" d="M19.948 7.179a1.06 1.06 0 0 0-.914-.724l-5.774-.52v0L10.978.64A1.063 1.063 0 0 0 10 0c-.427 0-.81.251-.977.64L6.74 5.936v0l-5.774.52a1.063 1.063 0 0 0-.915.723 1.05 1.05 0 0 0 .31 1.12l4.365 3.794v0L3.44 17.71c-.094.413.067.84.413 1.088a1.065 1.065 0 0 0 1.169.052L10 15.9v0l4.978 2.95a1.07 1.07 0 0 0 1.169-.05 1.05 1.05 0 0 0 .413-1.089l-1.287-5.618v0l4.365-3.794a1.05 1.05 0 0 0 .31-1.12z" clip-path="url(&quot;#kq7ma&quot;)"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </a>
+                        <a class="header__message" href="#">
+                            <div class="header__star-img">
+                                <svg class="img-svg" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                    <defs>
+                                        <clipPath id="hcpxa">
+                                            <path fill="#fff" d="M2.63 17.005H1.292l.946-.96c.51-.518.83-1.191.915-1.922C.968 12.668-.12 10.56-.12 8.35-.12 4.273 3.573.13 9.356.13c6.127 0 9.413 3.812 9.413 7.863 0 4.077-3.32 7.887-9.413 7.887-1.067 0-2.18-.145-3.175-.41a4.925 4.925 0 0 1-3.55 1.535z"/>
+                                        </clipPath></defs><g><g>
+                                                <path fill="none" stroke="#969696" stroke-miterlimit="20" stroke-width="2" d="M2.63 17.005v0H1.292v0l.946-.96c.51-.518.83-1.191.915-1.922C.968 12.668-.12 10.56-.12 8.35-.12 4.273 3.573.13 9.356.13c6.127 0 9.413 3.812 9.413 7.863 0 4.077-3.32 7.887-9.413 7.887-1.067 0-2.18-.145-3.175-.41a4.925 4.925 0 0 1-3.55 1.535z" clip-path="url(&quot;#hcpxa&quot;)"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="header__new-message"></div>
+                        </a>
+                    </div>
+                    <a class="header__avatar" href="#">
+                        <picture>
+                            <source media="(max-width: 500px)" srcset="assets/images/me-avatar-little.jpg">
+                            <img class="header__img" src="assets/images/me-avatar.jpg" alt="">
+                        </picture>
+                    </a>
+                    <!-- <a class="header__btn" href="#">Регистрация</a> -->
+                </div>
+            </div>
+        </div>
+        <nav class="header__menu header__menu--mobail">
+            <a class="header__menu-element header__menu-element--active" href="#">Программа</a>
+            <a class="header__menu-element" href="#">Спикеры</a>
+            <a class="header__menu-element" href="#">Трансляции</a>
+            <a class="header__menu-element" href="#">Экспоненты</a>
+            <a class="header__menu-element" href="#">Новости</a>
+        </nav>
+    </header>
+    <main class="speaker">
+        <section class="crumbs">
+            <div class="container">
+                <div class="crumbs__inner">
+                    <a class="crumbs__element" href="#">Главаня -</a>
+                    <a class="crumbs__element crumbs__element--current" href="#">Личный кабинет</a>
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <div class="container">
+                <div class="content__inner">
+                    <div class="content__photo">
+                        <div class="user-avatar">
+                            <div class="user-avatar__img">КК</div>
+                        </div>
+                        <label class="content__switch" for="i-file">Изменить фото</label>
+                        <input class="content__switch-input" id="i-file" type="file" value="Изменить фото">
+                    </div>
+                    <form class="content__form" action="" method="post" id="profile-change">
+                        <div class="input-name">Фамилия</div>
+                        <input class="input-square " type="text" name='surname'>
+                        <div class="input-name ">Имя</div>
+                        <input class="input-square input-square--bottom" type="text" name='name'>
+                        <div class="input-name ">Название организациия</div>
+                        <input class="input-square " type="text" name='company'>
+                        <div class="input-name ">Должность</div>
+                        <input class="input-square " type="text" name='position'>
+                        <div class="input-name ">Город</div>
+                        <input class="input-square " type="text" name='city'>
+                        <div class="input-name ">О себе</div>
+                        <textarea class="content__form-textarea" name="about"></textarea>
+                        <div class="input-name ">Текущий пароль</div>
+                        <input class="input-square " type="password" name='password'>
+                        <div class="input-name ">Новый пароль</div>
+                        <input class="input-square " type="password" name='new-password'>
+                        <div class="input-name ">Повторить пароль</div>
+                        <input class="input-square " type="password" name='repeat-password'>
+                        <button class="content__form-btn" type="submit">Сохранить</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer" style="background-color: #fff;">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__cop">2020 Copyright © </div>
+                <a class="footer__agreement" href="#">Пользовательское соглашение и правила пользования сайтом</a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/js/main.min.js"></script>
+</body>
+
+</html>

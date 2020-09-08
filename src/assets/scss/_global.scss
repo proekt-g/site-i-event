@@ -1219,3 +1219,11 @@ main {
         max-height: 98px;
     }
 }
+
+.swiper-button-disabled {
+    opacity: 0.7;
+    cursor: auto;
+    &:hover {
+        color: #969696;
+    }
+}

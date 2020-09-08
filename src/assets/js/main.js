@@ -83,6 +83,9 @@ window.addEventListener('load', function() {
         swiperLast,
         swiperLastblock;
 
+    let elementParent;
+
+
     if ($swiperContainer !== null) {
         if (document.querySelector('main.main') !== null) {
             let widthPartnersLogo = 0,
@@ -139,32 +142,51 @@ window.addEventListener('load', function() {
         }
 
         if (document.querySelector('.content__slider-block.swiper-container') !== null) {
-            swiperLastblock = new Swiper('.content__slider-block.swiper-container', {
-                spaceBetween: 20,
-                autoHeight: true,
-                // slidesPerColumn: 3,
-                slidesPerView: 1,
-                // width: 666,
-                navigation: {
-                    nextEl: '.strip__next-mobail',
-                    prevEl: '.strip__prev-mobail',
-                },
-                pagination: {
-                    el: '.strip__numbers',
-                    clickable: true,
-                    renderBullet: function(index, className) {
-                        return `<div class="strip__number ${className}">` + (index + 1) + '</div>';
+            if (window.innerWidth > 700) {
+                swiperLastblock = new Swiper('.content__slider-block.swiper-container', {
+                    spaceBetween: 20,
+                    autoHeight: false,
+                    // slidesPerColumn: 3,
+                    slidesPerView: 1,
+                    // width: 666,
+                    navigation: {
+                        nextEl: '.strip__next',
+                        prevEl: '.strip__prev',
                     },
-                },
-                breakpoints: {
-                    701: {
-                        navigation: {
-                            nextEl: '.strip__next',
-                            prevEl: '.strip__prev',
+                    pagination: {
+                        el: '.strip__numbers',
+                        clickable: true,
+                        renderBullet: function(index, className) {
+                            return `<div class="strip__number ${className}">` + (index + 1) + '</div>';
+                        },
+                    },
+                    breakpoints: {
+                        1651: {
+                            autoHeight: true,
+                        },
+                        701: {
+                            autoHeight: false,
                         }
                     }
-                }
-            });
+                });
+            } else {
+                swiperLastblock = new Swiper('.content__slider-block.swiper-container', {
+                    spaceBetween: 20,
+                    autoHeight: false,
+                    slidesPerView: 1,
+                    navigation: {
+                        nextEl: '.strip__next-mobail',
+                        prevEl: '.strip__prev-mobail',
+                    },
+                    pagination: {
+                        el: '.strip__numbers',
+                        clickable: true,
+                        renderBullet: function(index, className) {
+                            return `<div class="strip__number ${className}">` + (index + 1) + '</div>';
+                        },
+                    },
+                });
+            }
         }
     }
 
@@ -260,6 +282,7 @@ window.addEventListener('load', function() {
             $('html, body').animate({ scrollTop: dn - 70 }, 400);
         }
     }
+
 
 
 
@@ -385,8 +408,38 @@ window.addEventListener('load', function() {
     if ($lastBoxClose !== null) $lastBoxClose.forEach(function(item) {
         item.addEventListener('click', clickCloseLastBox);
     });
-    if ($contentProgramFormDay !== null) $contentProgramFormDay.forEach(function(item) {
+    if ($contentProgramFormDay !== null) $contentProgramFormDay.forEach(function(item, index) {
         item.addEventListener('click', addModifierActive.bind(null, item, 1), false);
+        switch (index) {
+            case 0:
+                item.addEventListener('click', createProgramSlider.bind(item, 'first'), false);
+                break;
+            case 1:
+                item.addEventListener('click', createProgramSlider.bind(item, 'second'), false);
+                break;
+            case 2:
+                item.addEventListener('click', createProgramSlider.bind(item, 'third'), false);
+                break;
+            case 3:
+                item.addEventListener('click', createProgramSlider.bind(item, 'fourth'), false);
+                break;
+            case 4:
+                item.addEventListener('click', createProgramSlider.bind(item, 'fifth'), false);
+                break;
+            case 5:
+                item.addEventListener('click', createProgramSlider.bind(item, 'sixth'), false);
+                break;
+            case 6:
+                item.addEventListener('click', createProgramSlider.bind(item, 'seventh'), false);
+                break;
+            case 7:
+                item.addEventListener('click', createProgramSlider.bind(item, 'eighth'), false);
+                break;
+            case 8:
+                item.addEventListener('click', createProgramSlider.bind(item, 'ninth'), false);
+                break;
+
+        }
     });
     if ($contentInfoParticipantsAll !== null) $contentInfoParticipantsAll.forEach(function(item) {
         item.addEventListener('click', clickMoreAvatar, false);
@@ -475,21 +528,37 @@ window.addEventListener('load', function() {
             let _this = this,
                 elementOne,
                 elementTwo;
-            if (_this !== $('.content__box')[2]) elementOne = $('.content__box')[2];
-            else elementOne = $('.content__box')[3];
-            if (_this !== $('.content__box')[5]) elementTwo = $('.content__box')[5];
-            else elementTwo = $('.content__box')[4];
-            $('.content__box').fadeOut(400);
+            elementParent = this.closest('.swiper-slide');
+
+            if ($(elementParent).find('.content__box').length > 2) {
+                elementOne = $(elementParent).find('.content__box').not(_this)[0];
+                elementTwo = $(elementParent).find('.content__box').not(_this).not(elementOne)[0];
+            }
+            if ($(elementParent).find('.content__box').length === 2) {
+                elementOne = $(elementParent).find('.content__box').not(_this)[0];
+                elementTwo = document.createElement('div');
+            }
+            if ($(elementParent).find('.content__box').length === 1) {
+                elementOne = document.createElement('div');
+                elementTwo = document.createElement('div');
+            }
+
+            $(elementParent).find('.content__box').fadeOut(400);
 
             setTimeout(function() {
-                addModifierActive(_this, 1);
-                if (document.querySelector('.last__block-inner').querySelector('.last__box') !== null) {
-                    document.querySelector('.last__block-inner').querySelector('.last__box').addEventListener('click', clickLastBox);
-                    document.querySelector('.last__block-inner').insertAdjacentElement('afterend', document.querySelector('.last__block-inner').querySelector('.last__box'));
+                addModifierActive(document.querySelector('.content__block'), 1);
+                addModifierActive(_this, 0);
+                elementParent.querySelectorAll('.content__box').forEach(function(item) {
+                    if (item !== _this && item.classList.contains('content__box--active')) addModifierActive(item, 0);
+                });
+                if (elementParent.querySelector('.last__block-inner').querySelector('.last__box') !== null) {
+                    elementParent.querySelector('.last__block-inner').querySelector('.last__box').addEventListener('click', clickLastBox);
+                    // document.querySelector('.last__block-inner').insertAdjacentElement('afterend', document.querySelector('.last__block-inner').querySelector('.last__box'));
+                    elementParent.querySelector('.content__slide-wrapper').insertAdjacentElement('afterbegin', elementParent.querySelector('.last__block-inner').querySelector('.last__box'));
                 }
-                document.querySelector('.last__block-inner').insertAdjacentElement('afterbegin', _this);
-                document.querySelector('.last__block-wrapper').insertAdjacentElement('beforeend', elementOne);
-                document.querySelector('.last__block-wrapper').insertAdjacentElement('beforeend', elementTwo);
+                elementParent.querySelector('.last__block-inner').insertAdjacentElement('afterbegin', _this);
+                elementParent.querySelector('.last__block-wrapper').insertAdjacentElement('beforeend', elementOne);
+                elementParent.querySelector('.last__block-wrapper').insertAdjacentElement('beforeend', elementTwo);
 
                 $(_this).fadeIn(400);
                 $(elementOne).fadeIn(400);
@@ -497,6 +566,7 @@ window.addEventListener('load', function() {
                 _this.removeEventListener('click', clickLastBox);
             }, 400);
         } else {
+            addModifierActive(document.querySelector('.content__block'), 1);
             $(this).children('.last__box-close').fadeIn(400);
             $(this).children('.last__box-inner').toggle(400);
             this.removeEventListener('click', clickLastBox);
@@ -505,18 +575,25 @@ window.addEventListener('load', function() {
     }
 
     function clickCloseLastBox() {
+        elementParent = this.closest('.swiper-slide');
         if (window.innerWidth > 500) {
-            $('.content__box').fadeOut(400);
+            $(elementParent).find('.content__box').fadeOut(400);
             setTimeout(function() {
-                addModifierActive(document.querySelector('.last__block-inner').querySelector('.last__box'));
-                document.querySelector('.last__block-inner').querySelector('.last__box').addEventListener('click', clickLastBox);
-                document.querySelector('.last__block-inner').insertAdjacentElement('afterend', document.querySelector('.last__block-inner').querySelector('.last__box'));
-                document.querySelector('.last__block-wrapper').querySelectorAll('.last__box').forEach(function(item) {
-                    document.querySelector('.last__block-inner').insertAdjacentElement('afterend', item);
+                addModifierActive(document.querySelector('.content__block'), 1);
+                console.log('first');
+                addModifierActive(elementParent.querySelector('.last__block-inner').querySelector('.last__box'));
+                console.log('second');
+                elementParent.querySelector('.last__block-inner').querySelector('.last__box').addEventListener('click', clickLastBox);
+                // document.querySelector('.last__block-inner').insertAdjacentElement('afterend', document.querySelector('.last__block-inner').querySelector('.last__box'));
+                elementParent.querySelector('.content__slide-wrapper').insertAdjacentElement('afterbegin', elementParent.querySelector('.last__block-inner').querySelector('.last__box'));
+                elementParent.querySelector('.last__block-wrapper').querySelectorAll('.last__box').forEach(function(item) {
+                    // document.querySelector('.last__block-inner').insertAdjacentElement('afterend', item);
+                    elementParent.querySelector('.content__slide-wrapper').insertAdjacentElement('afterbegin', item);
                 });
-                $('.content__box').fadeIn(400);
+                $(elementParent).find('.content__box').fadeIn(400);
             }, 400);
         } else {
+            document.querySelector('.content__block').classList.toggle('content__block--active');
             let _this = this;
             $(this).parent().children('.last__box-inner').toggle(400);
             $(this).fadeOut(400);
@@ -525,7 +602,6 @@ window.addEventListener('load', function() {
             setTimeout(function() {
                 _this.closest('.last__box').addEventListener('click', clickLastBox);
             }, 200)
-
         }
     }
 
@@ -534,9 +610,55 @@ window.addEventListener('load', function() {
         clickLastBox();
     }
 
+    function createProgramSlider(numberTab) {
+        document.querySelectorAll(`.content__program .content__program`).forEach(function(item) {
+            item.classList.add('content__program--hidden');
+        });
+        document.querySelector(`.content__program--${numberTab}`).classList.remove('content__program--hidden');
+        if (!this.classList.contains('content__program-form-day--init')) {
+            this.classList.add(`content__program-form-day--init`);
+            document.querySelector(`.content__program--${numberTab}`).classList.add('content__program--init');
+            let arrowNext,
+                arrowPrev;
+            if (window.innerWidth > 700) {
+                arrowNext = `.strip__next.strip__next--${numberTab}`;
+                arrowPrev = `.strip__prev.strip__prev--${numberTab}`;
+            } else {
+                arrowNext = `.strip__next-mobail.strip__next-mobail--${numberTab}`;
+                arrowPrev = `.strip__prev-mobail.strip__prev-mobail--${numberTab}`;
+            }
+            let programSliderFirst = new Swiper(`.content__program.content__program--${numberTab}.swiper-container`, {
+                spaceBetween: 20,
+                autoHeight: true,
+                slidesPerView: 1,
+                navigation: {
+                    nextEl: arrowNext,
+                    prevEl: arrowPrev
+                },
+                pagination: {
+                    el: `.strip__numbers-program.strip__numbers-program--${numberTab}`,
+                    clickable: true,
+                    renderBullet: function(index, className) {
+                        return `<div class="strip__number ${className}">` + (index + 1) + '</div>';
+                    },
+                }
+            });
+        }
+
+    }
+
     function clickProducttitle() {
-        document.querySelector('.content__block').classList.toggle('content__block--hidden');
-        document.querySelector('.content__program').classList.toggle('content__program--hidden');
+        if (this.classList.contains('content__product-title--second')) {
+            document.querySelector('.content__slider-block').classList.add('content__slider-block--hidden');
+            document.querySelector('.content__program').classList.remove('content__program--hidden');
+            if (!document.querySelector('.content__program').classList.contains('content__product-title--init')) {
+                document.querySelector('.content__program').classList.add('content__product-title--init');
+                createProgramSlider.bind(document.querySelector('.content__program-form-day--first'), 'first')();
+            }
+        } else {
+            document.querySelector('.content__program').classList.add('content__program--hidden');
+            document.querySelector('.content__slider-block').classList.remove('content__slider-block--hidden');
+        }
     }
 
     function choiseTimeElement() {
