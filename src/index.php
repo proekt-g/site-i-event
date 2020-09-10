@@ -9,12 +9,17 @@
 
 <body>
     <ul>
+        <div class="text">Я бы рекомендовал посмотреть эту страницу, она самая примечательная</div>
+        <div class="text">Необычный слайдер Продукты + Слайдер программа иероприятий</div>
+        <div class="text">И внутри все эелементы тоже "интерактивные"</div>
+        <div class="text">************</div>
+        <li><a href="last.html" style="color:green; font-size: 20px;">Страница стенда</a></li>
+        <div class="text">************</div>
         <li><a href="broadcast.html">Страница трансляций</a></li>
         <li><a href="event.html">Страница события</a></li>
         <li><a href="exhibitor.html">Страница программ экспонентов</a></li>
         <li><a href="exhibitor-event.html">Страница программы экспонентов</a></li>
         <li><a href="favorites.html">Страница изранного</a></li>
-        <li><a href="last.html">Страница стенда</a></li>
         <li><a href="list-broadcast.html">Страница списка трансляций</a></li>
         <li><a href="main.html">Главная страница</a></li>
         <li><a href="page.html">Страница экспонентов</a></li>
