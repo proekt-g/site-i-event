@@ -1,4 +1,8 @@
 .list-broadcast {
+    .bottom-info {
+        position: relative;
+        z-index: 15;
+    }
     .banner {
         width: 100%;
         max-width: 100vw;
@@ -13,19 +17,19 @@
         grid-template-columns: repeat(3, minmax(100px, max-content));
         justify-content: space-between;
         grid-gap: 20px;
-        @media(max-width: 1220px) {
+        @media (max-width: 1220px) {
             grid-template-columns: repeat(2, minmax(100px, max-content));
         }
-        @media(max-width: 768px) {
+        @media (max-width: 768px) {
             grid-template-columns: repeat(1, minmax(100px, max-content));
         }
-        @media(max-width: 500px) {
+        @media (max-width: 500px) {
             grid-gap: 10px;
         }
     }
     &__main-title {
         margin: 50px 0 20px;
-        @media(max-width: 500px) {
+        @media (max-width: 500px) {
             margin: 30px 0 20px;
         }
     }
@@ -33,22 +37,29 @@
         flex: 0 1 517px;
         display: flex;
         flex-direction: column;
+        position: relative;
+        &-link {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
         &-img {
             padding: 0 22px;
             justify-content: center;
             flex-direction: column;
             align-items: flex-start;
-            @media(max-width: 500px) {
+            @media (max-width: 500px) {
                 height: 161px;
             }
         }
         &--big {
             flex: 0 1 1054px;
             grid-column: 2 / 4;
-            @media(max-width: 1220px) {
+            @media (max-width: 1220px) {
                 grid-column: 3 / 1;
             }
-            @media(max-width: 768px) {
+            @media (max-width: 768px) {
                 grid-column: 1;
             }
         }
@@ -68,13 +79,13 @@
         color: $submainColor;
         font-size: 60px;
         font-weight: 800;
-        @media(max-width: 1550px) {
+        @media (max-width: 1550px) {
             font-size: 45px;
         }
-        @media(max-width: 950px) {
+        @media (max-width: 950px) {
             font-size: 40px;
         }
-        @media(max-width: 500px) {
+        @media (max-width: 500px) {
             font-size: 30px;
         }
     }

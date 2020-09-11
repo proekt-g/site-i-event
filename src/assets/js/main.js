@@ -1,6 +1,17 @@
 document.onreadystatechange = function () {
     if (document.readyState === "interactive") {
         if (
+            document.querySelector(".content__video") !== null &&
+            window.innerWidth <= 1220
+        ) {
+            document
+                .querySelector(".content")
+                .insertAdjacentElement(
+                    "afterbegin",
+                    document.querySelector(".content__video")
+                );
+        }
+        if (
             document.querySelector(".sidebar") !== null &&
             window.innerWidth <= 1220
         ) {
@@ -12,6 +23,18 @@ document.onreadystatechange = function () {
                         "afterbegin",
                         document.querySelector(".filter")
                     );
+        }
+        if (
+            document.querySelector(".moderators") !== null &&
+            document.querySelector(".content__mobail") !== null &&
+            window.innerWidth <= 1220
+        ) {
+            document
+                .querySelector(".content__mobail")
+                .insertAdjacentElement(
+                    "beforebegin",
+                    document.querySelector(".moderators")
+                );
         }
         if (
             document.querySelector("main.event") !== null &&
@@ -64,6 +87,7 @@ window.addEventListener("load", function () {
     let $contentTextInfo = document.querySelectorAll(
             ".program .content__text-info"
         ),
+        $content = document.querySelector(".content"),
         $avatar = document.querySelectorAll(".avatar"),
         $choise = document.querySelectorAll(".choise"),
         $checkBox = document.querySelectorAll(".checkbox"),
@@ -126,7 +150,7 @@ window.addEventListener("load", function () {
         $speakersFilterSubmit = document.querySelector(
             ".speakers-filter__submit"
         ),
-        $broadcastTopChat = document.querySelector(".broadcast__top-chat"),
+        $broadcastTopChat = document.querySelectorAll(".broadcast__top-chat"),
         $broadcastForm = document.querySelector(".broadcast__form"),
         $contentSidebarMore = document.querySelector(".content__sidebar-more"),
         $lastBox = document.querySelectorAll(".last__box"),
@@ -148,6 +172,8 @@ window.addEventListener("load", function () {
         $contentProductTitle = document.querySelectorAll(
             ".content__product-title"
         );
+
+    // $broadcastTopChat = document.querySelectorAll(".broadcast__top-chat");
 
     let swiperBrend,
         swiperExpo,
@@ -389,6 +415,40 @@ window.addEventListener("load", function () {
         }
     }
 
+    if ($content !== null) {
+        $content.addEventListener(
+            "click",
+            function () {
+                if (event.target.closest(".content__text-info") !== null) {
+                    focusContenTextInfo.bind(
+                        event.target.closest(".content__text-info"),
+                        (
+                            event.target
+                                .closest(".content__text-info")
+                                .closest(".content__box")
+                                .querySelector(".content__box-inner")
+                                .offsetHeight + 20
+                        ).toString() + "px"
+                    )();
+                    event.target
+                        .closest(".content__text-info")
+                        .addEventListener("blur", blurInfoText, false);
+                }
+                if (event.target.closest(".avatar") !== null) {
+                    clickAvatar();
+                    addModifierOpen(
+                        event.target
+                            .closest(".avatar")
+                            .querySelector(".avatar__info")
+                    );
+                    event.target
+                        .closest(".avatar")
+                        .addEventListener("blur", blurAvatar, false);
+                }
+            },
+            false
+        );
+    }
     if ($choise !== null)
         $choise.forEach(function (item) {
             item.querySelector(".choise__title").addEventListener(
@@ -426,49 +486,49 @@ window.addEventListener("load", function () {
             );
         });
 
-    if ($avatar !== null)
-        $avatar.forEach(function (item) {
-            item.addEventListener("click", clickAvatar, false);
-            item.addEventListener(
-                "click",
-                addModifierOpen.bind(null, item.querySelector(".avatar__info")),
-                false
-            );
-            item.addEventListener(
-                "blur",
-                function () {
-                    document
-                        .querySelector(".avatar__info--open")
-                        .classList.remove("avatar__info--open");
-                },
-                false
-            );
-        });
-    if ($contentTextInfo !== null)
-        $contentTextInfo.forEach(function (item) {
-            item.addEventListener(
-                "click",
-                focusContenTextInfo.bind(
-                    item,
-                    (
-                        item
-                            .closest(".content__box")
-                            .querySelector(".content__box-inner").offsetHeight +
-                        20
-                    ).toString() + "px"
-                ),
-                false
-            );
-            item.addEventListener(
-                "blur",
-                function () {
-                    document
-                        .querySelector(".content__modal--open")
-                        .classList.remove("content__modal--open");
-                },
-                false
-            );
-        });
+    // if ($avatar !== null)
+    //     $avatar.forEach(function (item) {
+    //         item.addEventListener("click", clickAvatar, false);
+    //         item.addEventListener(
+    //             "click",
+    //             addModifierOpen.bind(null, item.querySelector(".avatar__info")),
+    //             false
+    //         );
+    //         item.addEventListener(
+    //             "blur",
+    //             function () {
+    //                 document
+    //                     .querySelector(".avatar__info--open")
+    //                     .classList.remove("avatar__info--open");
+    //             },
+    //             false
+    //         );
+    //     });
+    // if ($contentTextInfo !== null)
+    //     $contentTextInfo.forEach(function (item) {
+    //         item.addEventListener(
+    //             "click",
+    //             focusContenTextInfo.bind(
+    //                 item,
+    //                 (
+    //                     item
+    //                         .closest(".content__box")
+    //                         .querySelector(".content__box-inner").offsetHeight +
+    //                     20
+    //                 ).toString() + "px"
+    //             ),
+    //             false
+    //         );
+    //         item.addEventListener(
+    //             "blur",
+    //             function () {
+    //                 document
+    //                     .querySelector(".content__modal--open")
+    //                     .classList.remove("content__modal--open");
+    //             },
+    //             false
+    //         );
+    //     });
     if ($dateElement !== null)
         $dateElement.forEach(function (item) {
             item.addEventListener(
@@ -669,7 +729,33 @@ window.addEventListener("load", function () {
             false
         );
     }
-
+    if ($checkboxElementInput.length !== null)
+        $checkboxElementInput.forEach(function (item) {
+            item.addEventListener(
+                "input",
+                function () {
+                    if (
+                        this.closest(".checkbox__element") ===
+                        this.closest(".checkbox")
+                            .querySelector(".checkbox__element-label--all")
+                            .closest(".checkbox__element")
+                    ) {
+                        this.closest(".checkbox")
+                            .querySelectorAll(".checkbox__element-input")
+                            .forEach(function (item) {
+                                item.checked = false;
+                            });
+                        this.checked = true;
+                    } else {
+                        this.closest(".checkbox")
+                            .querySelector(".checkbox__element-label--all")
+                            .closest(".checkbox__element")
+                            .querySelector("input").checked = false;
+                    }
+                },
+                false
+            );
+        });
     if ($filterTimeElement !== null)
         $filterTimeElement.forEach(function (item) {
             item.addEventListener(
@@ -688,6 +774,10 @@ window.addEventListener("load", function () {
                 addModifierActive.bind(null, item, 1),
                 false
             );
+        });
+    if ($broadcastTopChat.length !== 0)
+        $broadcastTopChat.forEach(function (item) {
+            item.addEventListener("click", scrollBehavior, false);
         });
     if ($infoMore !== null) {
         $infoMore.addEventListener(
@@ -733,22 +823,22 @@ window.addEventListener("load", function () {
             );
             item.addEventListener("click", scrollBehavior, false);
         });
-    if ($broadcastTopChat !== null) {
-        $broadcastTopChat.addEventListener(
-            "click",
-            addModifierOpen.bind(null, [
-                $sidebar,
-                document.querySelector(".sidebar__content"),
-            ]),
-            false
-        );
-        $broadcastTopChat.addEventListener("click", blockBody, false);
-        $broadcastTopChat.addEventListener(
-            "click",
-            upPage.bind(null, 100),
-            false
-        );
-    }
+    // if ($broadcastTopChat !== null) {
+    //     $broadcastTopChat.addEventListener(
+    //         "click",
+    //         addModifierOpen.bind(null, [
+    //             $sidebar,
+    //             document.querySelector(".sidebar__content"),
+    //         ]),
+    //         false
+    //     );
+    //     $broadcastTopChat.addEventListener("click", blockBody, false);
+    //     $broadcastTopChat.addEventListener(
+    //         "click",
+    //         upPage.bind(null, 100),
+    //         false
+    //     );
+    // }
     if ($contentSidebarMore !== null) {
         if (window.innerWidth >= 500)
             $contentSidebarMore.addEventListener(
@@ -1135,6 +1225,11 @@ window.addEventListener("load", function () {
     // /Выбор даты Программы мероприятий (last.html)
     // ************** /Формы
 
+    function blurAvatar() {
+        document
+            .querySelector(".avatar__info--open")
+            .classList.remove("avatar__info--open");
+    }
     function clickLastBox() {
         if (window.innerWidth > 500) {
             let _this = this,
@@ -1294,43 +1389,43 @@ window.addEventListener("load", function () {
         document
             .querySelector(`.content__program--${numberTab}`)
             .classList.remove("content__program--hidden");
-        if (!this.classList.contains("content__program-form-day--init")) {
-            this.classList.add(`content__program-form-day--init`);
-            document
-                .querySelector(`.content__program--${numberTab}`)
-                .classList.add("content__program--init");
-            let arrowNext, arrowPrev;
-            if (window.innerWidth > 700) {
-                arrowNext = `.strip__next.strip__next--${numberTab}`;
-                arrowPrev = `.strip__prev.strip__prev--${numberTab}`;
-            } else {
-                arrowNext = `.strip__next-mobail.strip__next-mobail--${numberTab}`;
-                arrowPrev = `.strip__prev-mobail.strip__prev-mobail--${numberTab}`;
-            }
-            let programSliderFirst = new Swiper(
-                `.content__program.content__program--${numberTab}.swiper-container`,
-                {
-                    spaceBetween: 20,
-                    autoHeight: true,
-                    slidesPerView: 1,
-                    navigation: {
-                        nextEl: arrowNext,
-                        prevEl: arrowPrev,
-                    },
-                    pagination: {
-                        el: `.strip__numbers-program.strip__numbers-program--${numberTab}`,
-                        clickable: true,
-                        renderBullet: function (index, className) {
-                            return (
-                                `<div class="strip__number ${className}">` +
-                                (index + 1) +
-                                "</div>"
-                            );
-                        },
-                    },
-                }
-            );
-        }
+        // if (!this.classList.contains("content__program-form-day--init")) {
+        //     this.classList.add(`content__program-form-day--init`);
+        //     document
+        //         .querySelector(`.content__program--${numberTab}`)
+        //         .classList.add("content__program--init");
+        //     let arrowNext, arrowPrev;
+        //     if (window.innerWidth > 700) {
+        //         arrowNext = `.strip__next.strip__next--${numberTab}`;
+        //         arrowPrev = `.strip__prev.strip__prev--${numberTab}`;
+        //     } else {
+        //         arrowNext = `.strip__next-mobail.strip__next-mobail--${numberTab}`;
+        //         arrowPrev = `.strip__prev-mobail.strip__prev-mobail--${numberTab}`;
+        //     }
+        //     let programSliderFirst = new Swiper(
+        //         `.content__program.content__program--${numberTab}.swiper-container`,
+        //         {
+        //             spaceBetween: 20,
+        //             autoHeight: true,
+        //             slidesPerView: 1,
+        //             navigation: {
+        //                 nextEl: arrowNext,
+        //                 prevEl: arrowPrev,
+        //             },
+        //             pagination: {
+        //                 el: `.strip__numbers-program.strip__numbers-program--${numberTab}`,
+        //                 clickable: true,
+        //                 renderBullet: function (index, className) {
+        //                     return (
+        //                         `<div class="strip__number ${className}">` +
+        //                         (index + 1) +
+        //                         "</div>"
+        //                     );
+        //                 },
+        //             },
+        //         }
+        //     );
+        // }
     }
 
     function clickProducttitle() {
@@ -1363,7 +1458,11 @@ window.addEventListener("load", function () {
                 .classList.remove("content__slider-block--hidden");
         }
     }
-
+    function blurInfoText() {
+        document
+            .querySelector(".content__modal--open")
+            .classList.remove("content__modal--open");
+    }
     function choiseTimeElement() {
         $filterTimeInput.value = this.id;
     }
@@ -1459,6 +1558,12 @@ window.addEventListener("load", function () {
                     });
                     countActive += countActiveBuff;
                 });
+            // if (countActive) {
+            //     document
+            //         .querySelector(".checkbox__element-label--all")
+            //         .closest(".checkbox__element")
+            //         .querySelector("input").checked = false;
+            // }
         }
         countActiveBuff = 0;
         if (document.querySelectorAll(".filter__tags input") !== null)

@@ -12,7 +12,7 @@
             bottom: 45px;
             top: auto;
             max-height: 500px;
-            @media(max-width: 1220px) {
+            @media (max-width: 1220px) {
                 width: 100%;
             }
         }
@@ -25,45 +25,42 @@
     padding-bottom: 50px;
     .content {
         margin-top: 30px;
-        @media(max-width: 500px) {
+        @media (max-width: 500px) {
             margin-top: 0;
         }
         &__inner {
             display: flex;
             justify-content: space-between;
-            @media(max-width: 1220px) {
+            @media (max-width: 1220px) {
                 display: block;
             }
         }
         &__main {
             flex: 0 1 1053px;
             margin-right: 55px;
-            @media(max-width: 1220px) {
+            @media (max-width: 1220px) {
                 margin-right: 0px;
             }
         }
         &__video {
             max-width: 100%;
             width: 100%;
-            height: 592px;
-            @media(max-width: 1220px) {
-                height: 432px;
-            }
+            height: auto;
+            position: relative;
+            padding-top: 56.25%;
             iframe {
                 max-width: 100%;
                 width: 100%;
                 height: 100%;
-                @media(max-width: 1220px) {
-                    position: absolute;
-                    height: 432px;
-                    left: 0;
-                }
+                position: absolute;
+                top: 0;
+                left: 0;
             }
         }
         &__date {
             margin: 30px 0 15px;
             display: flex;
-            @media(max-width: 500px) {
+            @media (max-width: 500px) {
                 margin: 18px 0 15px;
             }
             &-day {
@@ -71,14 +68,14 @@
                 color: $siteColor;
                 font-size: 16px;
                 font-weight: 500;
-                @media(max-width: 500px) {
+                @media (max-width: 500px) {
                     font-size: 14px;
                 }
             }
             &-time {
                 font-size: 16px;
                 font-weight: 400;
-                @media(max-width: 500px) {
+                @media (max-width: 500px) {
                     font-size: 14px;
                 }
             }
@@ -87,7 +84,7 @@
             font-size: 14px;
             font-weight: 400;
             margin: 20px 0 10px;
-            @media(max-width: 500px) {
+            @media (max-width: 500px) {
                 font-size: 12px;
             }
         }
@@ -96,7 +93,7 @@
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            @media(max-width: 500px) {
+            @media (max-width: 500px) {
                 font-size: 12px;
             }
             &::after {
@@ -112,7 +109,7 @@
             font-size: 14px;
             font-weight: 400;
             margin: 20px 0 10px;
-            @media(max-width: 500px) {
+            @media (max-width: 500px) {
                 font-size: 12px;
             }
         }
@@ -122,8 +119,8 @@
             font-weight: 400;
             line-height: 18px;
             overflow: hidden;
-            transition: .6s;
-            @media(max-width: 500px) {
+            transition: 0.6s;
+            @media (max-width: 500px) {
                 line-height: 15.6px;
                 font-size: 12px;
                 height: 32px;
@@ -135,8 +132,8 @@
             font-weight: 400;
             margin: 10px 0 30px;
             cursor: pointer;
-            transition: .3s;
-            @media(max-width: 500px) {
+            transition: 0.3s;
+            @media (max-width: 500px) {
                 font-size: 12px;
                 margin: 10px 0 20px;
             }
@@ -158,7 +155,7 @@
             margin: 50px 0 20px;
             font-size: 14px;
             font-weight: 400;
-            @media(max-width: 500px) {
+            @media (max-width: 500px) {
                 font-size: 12px;
                 margin: 40px 0 20px;
             }
@@ -185,7 +182,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                @media(max-width: 1220px) {
+                @media (max-width: 1220px) {
                     margin-top: 0;
                 }
                 &-all {
@@ -193,14 +190,14 @@
                     font-size: 14px;
                     font-weight: 400;
                     cursor: pointer;
-                    transition: .3s;
-                    @media(max-width: 1220px) {
+                    transition: 0.3s;
+                    @media (max-width: 1220px) {
                         display: none;
                     }
-                    @media(max-width: 700px) {
+                    @media (max-width: 700px) {
                         display: block;
                     }
-                    @media(max-width: 500px) {
+                    @media (max-width: 500px) {
                         font-size: 12px;
                     }
                     &:hover {
@@ -213,13 +210,13 @@
                 font-size: 14px;
                 font-weight: 400;
                 cursor: pointer;
-                transition: .3s;
+                transition: 0.3s;
                 display: none;
                 margin-top: 12px;
-                @media(max-width: 1220px) {
+                @media (max-width: 1220px) {
                     display: block;
                 }
-                @media(max-width: 700px) {
+                @media (max-width: 700px) {
                     display: none;
                 }
                 &:hover {
@@ -227,17 +224,17 @@
                 }
             }
             &-inner {
-                @media(max-width: 1220px) {
+                @media (max-width: 1220px) {
                     flex: 0 1 auto;
                 }
-                @media(max-width: 700px) {
+                @media (max-width: 700px) {
                     margin-top: 50px;
                 }
                 .avatars {
                     height: 40px;
                     margin: 20px -2.4px 0;
-                    transition: .3s;
-                    @media(max-width: 1220px) {
+                    transition: 0.3s;
+                    @media (max-width: 1220px) {
                         margin: 17.5px -2.4px -2.5px;
                         flex-wrap: wrap;
                         overflow: visible;
@@ -245,7 +242,7 @@
                     }
                     .avatar {
                         margin: 0 2.4px;
-                        @media(max-width: 1220px) {
+                        @media (max-width: 1220px) {
                             margin: 2.5px 2.5px;
                         }
                     }
@@ -258,14 +255,14 @@
             }
             &-bottom {
                 margin-top: 35px;
-                @media(max-width: 1220px) {
+                @media (max-width: 1220px) {
                     margin-bottom: 50px;
                 }
                 &-all {
                     color: $submainColor;
                     font-size: 14px;
                     font-weight: 400;
-                    @media(max-width: 500px) {
+                    @media (max-width: 500px) {
                         font-size: 12px;
                     }
                 }
@@ -282,7 +279,7 @@
                 color: $submainColor;
                 font-size: 14px;
                 font-weight: 400;
-                transition: .3s;
+                transition: 0.3s;
                 &:hover {
                     color: $siteColor;
                 }
@@ -291,26 +288,26 @@
         &__mobail {
             display: flex;
             justify-content: space-between;
-            @media(max-width: 1220px) {
+            @media (max-width: 1220px) {
                 margin-top: 45px;
                 .speakers {
                     margin-right: 67px;
                     flex: 0 0 470px;
-                    @media(max-width: 768px) {
+                    @media (max-width: 768px) {
                         margin-right: 40px;
                     }
                     &__inner {
                         height: 325px;
                         overflow: hidden;
-                        transition: .6s;
+                        transition: 0.6s;
                     }
                 }
             }
-            @media(max-width: 700px) {
+            @media (max-width: 700px) {
                 display: block;
             }
             .speakers {
-                @media(max-width: 700px) {
+                @media (max-width: 700px) {
                     flex: 0 1 100%;
                     margin-right: 0;
                 }
