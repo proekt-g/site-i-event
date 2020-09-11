@@ -435,7 +435,7 @@ window.addEventListener("load", function () {
                         .addEventListener("blur", blurInfoText, false);
                 }
                 if (event.target.closest(".avatar") !== null) {
-                    clickAvatar();
+                    clickAvatar.bind(event.target)();
                     addModifierOpen(
                         event.target
                             .closest(".avatar")
